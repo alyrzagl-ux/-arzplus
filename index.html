@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -38,7 +39,7 @@
             border-radius: 18px;
             padding: 20px;
             margin-bottom: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
         }
         .title {
             font-size: 18px;
@@ -140,66 +141,104 @@
     </div>
 </div>
 <script>
-    // ==========================================
-    // کلید API نت ارز را بین دو کوتیشن قرار بده
-    // ==========================================
+    // =====================================================
+    // فقط کلید API خودت را بین دو کوتیشن زیر قرار بده
+    // =====================================================
     const API_KEY = "fx-ntz-v1-JVd2bR…8Pin";
+    // آدرس API
     const API_URL = "https://netarz.ir/api/fx/v1";
+    // تبدیل عدد به فرمت خوانا
     function formatPrice(number) {
+        if (number === null || number === undefined) {
+            return "---";
+        }
         return Number(number).toLocaleString("fa-IR");
     }
+    // دریافت نرخ ارز
     async function getRate(code) {
         const response = await fetch(
             `${API_URL}/rates/${code}`,
             {
+                method: "GET",
                 headers: {
-                    "Authorization": `Bearer ${API_KEY}`
+                    "Authorization": `Bearer ${API_KEY}`,
+                    "Accept": "application/json"
                 }
             }
         );
         const result = await response.json();
         if (!response.ok) {
             throw new Error(
-                result.error?.message || "خطا در دریافت نرخ"
+                result.error?.message ||
+                "خطا در دریافت نرخ"
             );
         }
         return result.data;
     }
+    // دریافت قیمت‌ها
     async function loadRates() {
-        const status = document.getElementById("status");
+        const status =
+            document.getElementById("status");
         try {
-            const [usd, eur, tr] = await Promise.all([
-                getRate("USD"),
-                getRate("EUR"),
-                getRate("TRY")
-            ]);
-            document.getElementById("usd-buy").textContent =
+            status.textContent =
+                "در حال دریافت نرخ‌ها...";
+            status.classList.remove("error");
+            const [usd, eur, tr] =
+                await Promise.all([
+                    getRate("USD"),
+                    getRate("EUR"),
+                    getRate("TRY")
+                ]);
+            // -------------------------
+            // دلار
+            // -------------------------
+            document.getElementById("usd-buy")
+                .textContent =
                 formatPrice(usd.buy);
-            document.getElementById("usd-sell").textContent =
+            document.getElementById("usd-sell")
+                .textContent =
                 formatPrice(usd.sell);
-            document.getElementById("eur-buy").textContent =
+            // -------------------------
+            // یورو
+            // -------------------------
+            document.getElementById("eur-buy")
+                .textContent =
                 formatPrice(eur.buy);
-            document.getElementById("eur-sell").textContent =
+            document.getElementById("eur-sell")
+                .textContent =
                 formatPrice(eur.sell);
-            document.getElementById("try-buy").textContent =
+            // -------------------------
+            // لیر
+            // -------------------------
+            document.getElementById("try-buy")
+                .textContent =
                 formatPrice(tr.buy);
-            document.getElementById("try-sell").textContent =
+            document.getElementById("try-sell")
+                .textContent =
                 formatPrice(tr.sell);
+            // زمان آخرین بروزرسانی
             status.textContent =
                 "آخرین بروزرسانی: " +
-                new Date().toLocaleTimeString("fa-IR");
-            status.classList.remove("error");
+                new Date()
+                    .toLocaleTimeString("fa-IR");
         } catch (error) {
-            console.error(error);
+            console.error(
+                "API Error:",
+                error
+            );
             status.textContent =
-                "خطا در دریافت نرخ. کلید API و تنظیمات دامنه را بررسی کنید.";
+                "خطا در دریافت نرخ‌ها. " +
+                "کلید API و تنظیمات دامنه را بررسی کنید.";
             status.classList.add("error");
         }
     }
     // دریافت قیمت هنگام باز شدن سایت
     loadRates();
     // بروزرسانی خودکار هر 5 دقیقه
-    setInterval(loadRates, 5 * 60 * 1000);
+    setInterval(
+        loadRates,
+        5 * 60 * 1000
+    );
 </script>
 </body>
 </html>
