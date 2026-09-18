@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
             background: #111827;
             color: white;
             text-align: center;
-            padding: 28px 15px;
+            padding: 30px 15px;
         }
 
         header h1 {
@@ -56,7 +57,6 @@
 
         .prices {
             display: flex;
-            justify-content: space-between;
             gap: 10px;
         }
 
@@ -64,7 +64,7 @@
             flex: 1;
             background: #f8f9fa;
             border-radius: 12px;
-            padding: 12px;
+            padding: 15px 10px;
             text-align: center;
         }
 
@@ -110,6 +110,7 @@
         <div class="title">🇺🇸 دلار آمریکا</div>
 
         <div class="prices">
+
             <div class="price-box">
                 <small>خرید</small>
                 <div class="price" id="usd-buy">---</div>
@@ -121,6 +122,7 @@
                 <div class="price" id="usd-sell">---</div>
                 <span class="unit">تومان</span>
             </div>
+
         </div>
     </div>
 
@@ -129,6 +131,7 @@
         <div class="title">🇪🇺 یورو</div>
 
         <div class="prices">
+
             <div class="price-box">
                 <small>خرید</small>
                 <div class="price" id="eur-buy">---</div>
@@ -140,6 +143,7 @@
                 <div class="price" id="eur-sell">---</div>
                 <span class="unit">تومان</span>
             </div>
+
         </div>
     </div>
 
@@ -148,6 +152,7 @@
         <div class="title">🇹🇷 لیر ترکیه</div>
 
         <div class="prices">
+
             <div class="price-box">
                 <small>خرید</small>
                 <div class="price" id="try-buy">---</div>
@@ -159,6 +164,7 @@
                 <div class="price" id="try-sell">---</div>
                 <span class="unit">تومان</span>
             </div>
+
         </div>
     </div>
 
@@ -173,18 +179,21 @@
 <script>
 
     // =====================================================
-    // API KEY
+    // کلید API را فقط اینجا وارد کن
     // =====================================================
 
-    const API_KEY = "fx-ntz-v1-q2umHq3GIAcL4TXEanmeb68IkGrcr15xe6IAILfj";
+    const API_KEY = "fx-ntz-v1-XTlgEnuLKeuiiFNOEJSEZjuoZRYFxS3xftlQ3cyT";
+
+
+    // آدرس API
+
+    const API_URL =
+        "https://netarz.ir/api/fx/v1";
 
 
     // =====================================================
-    // API URL
+    // فرمت قیمت
     // =====================================================
-
-    const API_URL = "https://netarz.ir/api/fx/v1";
-
 
     function formatPrice(number) {
 
@@ -196,26 +205,36 @@
             return "---";
         }
 
-        return Number(number).toLocaleString("fa-IR");
+        return Number(number)
+            .toLocaleString("fa-IR");
     }
 
 
+    // =====================================================
+    // دریافت نرخ ارز
+    // =====================================================
+
     async function getRate(code) {
 
-        const response = await fetch(
-            `${API_URL}/rates/${code}`,
-            {
-                method: "GET",
+        const response =
+            await fetch(
+                `${API_URL}/rates/${code}`,
+                {
+                    method: "GET",
 
-                headers: {
-                    "Authorization": `Bearer ${API_KEY}`,
-                    "Accept": "application/json"
+                    headers: {
+                        "Authorization":
+                            `Bearer ${API_KEY}`,
+
+                        "Accept":
+                            "application/json"
+                    }
                 }
-            }
-        );
+            );
 
 
-        const result = await response.json();
+        const result =
+            await response.json();
 
 
         if (!response.ok) {
@@ -232,6 +251,10 @@
     }
 
 
+    // =====================================================
+    // دریافت قیمت‌ها
+    // =====================================================
+
     async function loadRates() {
 
         const status =
@@ -242,6 +265,7 @@
 
             status.textContent =
                 "در حال دریافت نرخ‌ها...";
+
 
             status.classList.remove("error");
 
@@ -258,6 +282,8 @@
                 ]);
 
 
+            // دلار
+
             document.getElementById("usd-buy")
                 .textContent =
                 formatPrice(usd.buy);
@@ -266,6 +292,8 @@
                 .textContent =
                 formatPrice(usd.sell);
 
+
+            // یورو
 
             document.getElementById("eur-buy")
                 .textContent =
@@ -276,6 +304,8 @@
                 formatPrice(eur.sell);
 
 
+            // لیر
+
             document.getElementById("try-buy")
                 .textContent =
                 formatPrice(tr.buy);
@@ -285,30 +315,42 @@
                 formatPrice(tr.sell);
 
 
+            // آخرین بروزرسانی
+
             status.textContent =
                 "آخرین بروزرسانی: " +
-                new Date().toLocaleTimeString("fa-IR");
+                new Date()
+                    .toLocaleTimeString("fa-IR");
 
 
         } catch (error) {
 
-            console.error("API Error:", error);
+            console.error(
+                "API Error:",
+                error
+            );
+
 
             status.textContent =
-                "خطا در دریافت نرخ‌ها. " +
-                "کلید API و تنظیمات دامنه را بررسی کنید.";
+                "خطا در دریافت نرخ‌ها";
 
-            status.classList.add("error");
+
+            status.classList.add(
+                "error"
+            );
+
         }
 
     }
 
 
     // اجرای اولیه
+
     loadRates();
 
 
-    // بروزرسانی خودکار هر 5 دقیقه
+    // بروزرسانی هر 5 دقیقه
+
     setInterval(
         loadRates,
         5 * 60 * 1000
@@ -317,4 +359,5 @@
 </script>
 
 </body>
+
 </html>
