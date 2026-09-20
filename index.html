@@ -1,66 +1,48 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ArzPlus | نرخ لحظه‌ای ارز</title>
+    <title>ArzPlus</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
-            font-family: Tahoma, Arial, sans-serif;
+            font-family: Tahoma, Arial;
             background: #f4f5f7;
-            color: #222;
         }
 
         header {
             background: #111827;
             color: white;
             text-align: center;
-            padding: 30px 15px;
-        }
-
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 30px;
-        }
-
-        header p {
-            margin: 0;
-            opacity: 0.8;
+            padding: 25px;
         }
 
         .container {
-            max-width: 650px;
-            margin: 25px auto;
-            padding: 0 15px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
         }
 
         .card {
             background: white;
-            border-radius: 18px;
             padding: 20px;
-            margin-bottom: 18px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: bold;
             margin-bottom: 15px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px #ddd;
         }
 
-        .info {
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        #status {
             text-align: center;
-            color: #777;
-            font-size: 14px;
-            line-height: 2;
+            margin: 20px;
         }
     </style>
 </head>
@@ -75,21 +57,126 @@
 <div class="container">
 
     <div class="card">
-        <div class="title">💱 نرخ لحظه‌ای ارز</div>
+        <h2>🇺🇸 دلار</h2>
+        <div class="price" id="usd">---</div>
+        تومان
+    </div>
 
-        <div class="info">
-            ویجت رسمی نرخ ارز نت‌ارز
-        </div>
+    <div class="card">
+        <h2>🇪🇺 یورو</h2>
+        <div class="price" id="eur">---</div>
+        تومان
+    </div>
 
-        <!-- =================================================
-        <script src="https://netarz.ir/fx/widget.js" data-key="fx-ntz-v1-XTlgEn…" data-codes="USD,EUR,GBP,AED,TRY" data-theme="light" async></script>
-             ================================================= -->
+    <div class="card">
+        <h2>🇹🇷 لیر</h2>
+        <div class="price" id="try">---</div>
+        تومان
+    </div>
 
-        <!--<script src="https://netarz.ir/fx/widget.js" data-key="fx-ntz-v1-XTlgEn…" data-codes="USD,EUR,GBP,AED,TRY" data-theme="light" async></script -->
-
+    <div id="status">
+        در حال دریافت نرخ...
     </div>
 
 </div>
+
+<script>
+
+    // =================================================
+     fx-ntz-v1-0w2CjsU5Tz00c5zyGoackFotJAPzJ9K4IqyttVny
+    // =================================================
+
+    const API_KEY = "کلید خودت اینجا";
+
+
+    const API_URL =
+        "https://netarz.ir/api/fx/v1";
+
+
+    async function getRate(currency) {
+
+        const response = await fetch(
+            API_URL + "/rates/" + currency,
+            {
+                headers: {
+                    "Authorization":
+                        "Bearer " + API_KEY,
+
+                    "Accept":
+                        "application/json"
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "HTTP " + response.status
+            );
+        }
+
+        const result =
+            await response.json();
+
+        return result.data;
+    }
+
+
+    async function loadRates() {
+
+        const status =
+            document.getElementById("status");
+
+        try {
+
+            const usd =
+                await getRate("USD");
+
+            const eur =
+                await getRate("EUR");
+
+            const tr =
+                await getRate("TRY");
+
+
+            document.getElementById("usd")
+                .textContent =
+                Number(usd.sell)
+                    .toLocaleString("fa-IR");
+
+
+            document.getElementById("eur")
+                .textContent =
+                Number(eur.sell)
+                    .toLocaleString("fa-IR");
+
+
+            document.getElementById("try")
+                .textContent =
+                Number(tr.sell)
+                    .toLocaleString("fa-IR");
+
+
+            status.textContent =
+                "آخرین بروزرسانی: " +
+                new Date()
+                    .toLocaleTimeString("fa-IR");
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            status.textContent =
+                "خطا در دریافت نرخ";
+
+        }
+    }
+
+
+    loadRates();
+
+</script>
 
 </body>
 </html>
