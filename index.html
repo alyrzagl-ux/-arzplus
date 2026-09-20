@@ -1,351 +1,201 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ArzPlus | نرخ ارز</title>
 
-    <title>ArzPlus | نرخ لحظه‌ای ارز</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Tahoma, Arial, sans-serif;
-            background: #f3f4f6;
-            color: #1f2937;
-        }
-
-        header {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 32px 15px;
-        }
-
-        header h1 {
-            margin: 0 0 8px;
-            font-size: 32px;
-        }
-
-        header p {
-            margin: 0;
-            opacity: .8;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: 25px auto;
-            padding: 0 15px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.06);
-        }
-
-        .title {
-            font-size: 19px;
-            font-weight: bold;
-            margin-bottom: 16px;
-        }
-
-        .prices {
-            display: flex;
-            gap: 12px;
-        }
-
-        .price-box {
-            flex: 1;
-            background: #f8fafc;
-            border-radius: 13px;
-            padding: 15px 10px;
-            text-align: center;
-        }
-
-        .price-box small {
-            display: block;
-            color: #6b7280;
-            margin-bottom: 8px;
-        }
-
-        .price {
-            font-size: 21px;
-            font-weight: bold;
-        }
-
-        .unit {
-            font-size: 12px;
-            color: #6b7280;
-        }
-
-        #status {
-            text-align: center;
-            color: #6b7280;
-            font-size: 13px;
-            margin: 22px 0;
-        }
-
-        .error {
-            color: #dc2626 !important;
-        }
-    </style>
+<style>
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:#f3f4f6;
+color:#222;
+}
+header{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+}
+.container{
+max-width:600px;
+margin:20px auto;
+padding:10px;
+}
+.card{
+background:white;
+border-radius:15px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 4px 15px #ddd;
+}
+.title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
+}
+.prices{
+display:flex;
+gap:10px;
+}
+.box{
+flex:1;
+background:#f5f5f5;
+border-radius:10px;
+padding:12px;
+text-align:center;
+}
+.box small{
+display:block;
+color:#777;
+margin-bottom:8px;
+}
+.price{
+font-size:20px;
+font-weight:bold;
+}
+.unit{
+font-size:12px;
+color:#777;
+}
+#status{
+text-align:center;
+color:#777;
+margin:20px;
+}
+.error{
+color:red!important;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>ArzPlus</h1>
-    <p>نرخ لحظه‌ای ارز</p>
+<h1>ArzPlus</h1>
+<p>نرخ لحظه‌ای ارز</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <div class="title">🇺🇸 دلار آمریکا</div>
+<div class="card">
+<div class="title">🇺🇸 دلار آمریکا</div>
+<div class="prices">
+<div class="box">
+<small>خرید</small>
+<div class="price" id="usdBuy">---</div>
+<span class="unit">تومان</span>
+</div>
+<div class="box">
+<small>فروش</small>
+<div class="price" id="usdSell">---</div>
+<span class="unit">تومان</span>
+</div>
+</div>
+</div>
 
-        <div class="prices">
+<div class="card">
+<div class="title">🇪🇺 یورو</div>
+<div class="prices">
+<div class="box">
+<small>خرید</small>
+<div class="price" id="eurBuy">---</div>
+<span class="unit">تومان</span>
+</div>
+<div class="box">
+<small>فروش</small>
+<div class="price" id="eurSell">---</div>
+<span class="unit">تومان</span>
+</div>
+</div>
+</div>
 
-            <div class="price-box">
-                <small>خرید</small>
-                <div class="price" id="usd-buy">---</div>
-                <span class="unit">تومان</span>
-            </div>
+<div class="card">
+<div class="title">🇹🇷 لیر ترکیه</div>
+<div class="prices">
+<div class="box">
+<small>خرید</small>
+<div class="price" id="tryBuy">---</div>
+<span class="unit">تومان</span>
+</div>
+<div class="box">
+<small>فروش</small>
+<div class="price" id="trySell">---</div>
+<span class="unit">تومان</span>
+</div>
+</div>
+</div>
 
-            <div class="price-box">
-                <small>فروش</small>
-                <div class="price" id="usd-sell">---</div>
-                <span class="unit">تومان</span>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="card">
-        <div class="title">🇪🇺 یورو</div>
-
-        <div class="prices">
-
-            <div class="price-box">
-                <small>خرید</small>
-                <div class="price" id="eur-buy">---</div>
-                <span class="unit">تومان</span>
-            </div>
-
-            <div class="price-box">
-                <small>فروش</small>
-                <div class="price" id="eur-sell">---</div>
-                <span class="unit">تومان</span>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="card">
-        <div class="title">🇹🇷 لیر ترکیه</div>
-
-        <div class="prices">
-
-            <div class="price-box">
-                <small>خرید</small>
-                <div class="price" id="try-buy">---</div>
-                <span class="unit">تومان</span>
-            </div>
-
-            <div class="price-box">
-                <small>فروش</small>
-                <div class="price" id="try-sell">---</div>
-                <span class="unit">تومان</span>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div id="status">
-        در حال دریافت نرخ ارز...
-    </div>
+<div id="status">در حال دریافت نرخ ارز...</div>
 
 </div>
 
-
 <script>
 
-    /* ==================================================
-       fx-ntz-v1-7nta55IbjMHP18WN0XEtllxTNuvluBX8xfzTh3yA
-       ================================================== */
+/fx-ntz-v1-13a07f…sMsI */
+const API_KEY=" fx-ntz-v1-13a07foNuYZza6TowTKl060SOxqdoV3pLELKsMsI";
 
-    const API_KEY =fx-ntz-v1-7nta55IbjMHP18WN0XEtllxTNuvluBX8xfzTh3yA";
+const API="https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
 
+async function load(){
 
-    /* ==================================================
-       🌐 جای IP سرور
-       
-       برای GitHub Pages نیازی به IP نیست.
-       این قسمت را خالی می‌گذاریم.
-       ================================================== */
+try{
 
-    const SERVER_IP = "";
+const r=await fetch(API,{
+headers:{
+"Authorization":"Bearer "+API_KEY,
+"Accept":"application/json"
+}
+});
 
+const j=await r.json();
 
-    /* ==================================================
-       آدرس API نت‌ارز
-       ================================================== */
+if(!r.ok) throw new Error(
+j.error?.code+" - "+j.error?.message
+);
 
-    const API_URL =
-        "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
+const data=j.data||[];
 
+const usd=data.find(x=>x.code==="USD");
+const eur=data.find(x=>x.code==="EUR");
+const tr=data.find(x=>x.code==="TRY");
 
-    async function loadRates() {
+if(usd){
+document.getElementById("usdBuy").textContent=Number(usd.buy).toLocaleString("fa-IR");
+document.getElementById("usdSell").textContent=Number(usd.sell).toLocaleString("fa-IR");
+}
 
-        const status =
-            document.getElementById("status");
+if(eur){
+document.getElementById("eurBuy").textContent=Number(eur.buy).toLocaleString("fa-IR");
+document.getElementById("eurSell").textContent=Number(eur.sell).toLocaleString("fa-IR");
+}
 
-        try {
+if(tr){
+document.getElementById("tryBuy").textContent=Number(tr.buy).toLocaleString("fa-IR");
+document.getElementById("trySell").textContent=Number(tr.sell).toLocaleString("fa-IR");
+}
 
-            status.textContent =
-                "در حال دریافت نرخ ارز...";
+document.getElementById("status").textContent=
+"آخرین بروزرسانی: "+
+new Date().toLocaleTimeString("fa-IR");
 
-            status.classList.remove("error");
+}catch(e){
 
+console.error(e);
 
-            const response =
-                await fetch(API_URL, {
+document.getElementById("status").textContent=
+"خطا: "+e.message;
 
-                    method: "GET",
+document.getElementById("status").className="error";
 
-                    headers: {
+}
 
-                        "Authorization":
-                            "Bearer " + API_KEY,
+}
 
-                        "Accept":
-                            "application/json"
+load();
 
-                    }
-
-                });
-
-
-            const result =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                const code =
-                    result?.error?.code || "";
-
-                const message =
-                    result?.error?.message ||
-                    "خطای نامشخص";
-
-                throw new Error(
-                    code + " - " + message
-                );
-
-            }
-
-
-            const rates =
-                result.data || [];
-
-
-            const usd =
-                rates.find(
-                    item => item.code === "USD"
-                );
-
-            const eur =
-                rates.find(
-                    item => item.code === "EUR"
-                );
-
-            const tr =
-                rates.find(
-                    item => item.code === "TRY"
-                );
-
-
-            if (usd) {
-
-                document.getElementById("usd-buy")
-                    .textContent =
-                    Number(usd.buy)
-                        .toLocaleString("fa-IR");
-
-                document.getElementById("usd-sell")
-                    .textContent =
-                    Number(usd.sell)
-                        .toLocaleString("fa-IR");
-            }
-
-
-            if (eur) {
-
-                document.getElementById("eur-buy")
-                    .textContent =
-                    Number(eur.buy)
-                        .toLocaleString("fa-IR");
-
-                document.getElementById("eur-sell")
-                    .textContent =
-                    Number(eur.sell)
-                        .toLocaleString("fa-IR");
-            }
-
-
-            if (tr) {
-
-                document.getElementById("try-buy")
-                    .textContent =
-                    Number(tr.buy)
-                        .toLocaleString("fa-IR");
-
-                document.getElementById("try-sell")
-                    .textContent =
-                    Number(tr.sell)
-                        .toLocaleString("fa-IR");
-            }
-
-
-            status.textContent =
-                "آخرین بروزرسانی: " +
-                new Date()
-                    .toLocaleTimeString("fa-IR");
-
-
-        } catch (error) {
-
-            console.error(
-                "NetArz Error:",
-                error
-            );
-
-            status.textContent =
-                "خطا: " + error.message;
-
-            status.classList.add("error");
-        }
-
-    }
-
-
-    loadRates();
-
-
-    setInterval(
-        loadRates,
-        5 * 60 * 1000
-    );
+setInterval(load,300000);
 
 </script>
 
