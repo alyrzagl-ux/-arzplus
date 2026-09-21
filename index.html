@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ArzPlus | نرخ ارز</title>
+<title>نیک فرجام | نرخ ارز</title>
 
 <style>
 body{
@@ -67,37 +67,13 @@ margin:20px;
 .error{
 color:red!important;
 }
-
-.contact{
-background:#111827;
-color:white;
-border-radius:15px;
-padding:20px;
-margin-top:20px;
-text-align:center;
-}
-
-.contact h2{
-margin-top:0;
-}
-
-.contact a{
-display:block;
-background:#1f2937;
-color:white;
-text-decoration:none;
-padding:13px;
-border-radius:10px;
-margin-top:10px;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>ArzPlus</h1>
+<h1>نیک فرجام</h1>
 <p>نرخ لحظه‌ای ارز</p>
 </header>
 
@@ -105,105 +81,85 @@ margin-top:10px;
 
 <div class="card">
 <div class="title">🇺🇸 دلار آمریکا</div>
-
 <div class="prices">
-
 <div class="box">
 <small>خرید</small>
 <div class="price" id="usdBuy">---</div>
 <span class="unit">تومان</span>
 </div>
-
 <div class="box">
 <small>فروش</small>
 <div class="price" id="usdSell">---</div>
 <span class="unit">تومان</span>
 </div>
-
 </div>
 </div>
-
 
 <div class="card">
 <div class="title">🇪🇺 یورو</div>
-
 <div class="prices">
-
 <div class="box">
 <small>خرید</small>
 <div class="price" id="eurBuy">---</div>
 <span class="unit">تومان</span>
 </div>
-
 <div class="box">
 <small>فروش</small>
 <div class="price" id="eurSell">---</div>
 <span class="unit">تومان</span>
 </div>
-
 </div>
 </div>
-
 
 <div class="card">
 <div class="title">🇹🇷 لیر ترکیه</div>
-
 <div class="prices">
-
 <div class="box">
 <small>خرید</small>
 <div class="price" id="tryBuy">---</div>
 <span class="unit">تومان</span>
 </div>
-
 <div class="box">
 <small>فروش</small>
 <div class="price" id="trySell">---</div>
 <span class="unit">تومان</span>
 </div>
-
 </div>
 </div>
 
+<!-- تماس -->
 
-<div id="status">
-در حال دریافت نرخ ارز...
-</div>
+<div class="card">
+<div class="title">📞 تماس با ما</div>
 
+<p>
+مسعود نیک‌فرجام<br>
+<a href="tel:09034966597">0903 496 6597</a>
+</p>
 
-<section class="contact">
+<p>
+علیرضا گل‌محمدی<br>
+<a href="tel:09933747293">0993 374 7293</a>
+</p>
 
-<h2>تماس با ما</h2>
-
-<a href="tel:09034966597">
-📞 مسعود نیک‌فرجام
-<br>
-0903 496 6597
-</a>
-
-<a href="tel:09933747293">
-📞 علیرضا گل‌محمدی
-<br>
-0993 374 7293
-</a>
-
+<p>
 <a href="https://t.me/ArzPlusMarket">
 📲 کانال تلگرام ArzPlusMarket
 </a>
-
-</section>
+</p>
 
 </div>
 
+<div id="status">در حال دریافت نرخ ارز...</div>
+
+</div>
 
 <script>
 
-/* 🔑 کلید API را اینجا وارد کن */
-
+/* کلید API جدیدت را اینجا قرار بده */
 const API_KEY="اینجا کلید API جدید را وارد کن";
 
 const API="https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
-
 
 async function load(){
 
@@ -228,46 +184,33 @@ const usd=data.find(x=>x.code==="USD");
 const eur=data.find(x=>x.code==="EUR");
 const tr=data.find(x=>x.code==="TRY");
 
-
 if(usd){
-
 document.getElementById("usdBuy").textContent=
 Number(usd.buy).toLocaleString("fa-IR");
 
 document.getElementById("usdSell").textContent=
 Number(usd.sell).toLocaleString("fa-IR");
-
 }
 
-
 if(eur){
-
 document.getElementById("eurBuy").textContent=
 Number(eur.buy).toLocaleString("fa-IR");
 
 document.getElementById("eurSell").textContent=
 Number(eur.sell).toLocaleString("fa-IR");
-
 }
 
-
 if(tr){
-
 document.getElementById("tryBuy").textContent=
 Number(tr.buy).toLocaleString("fa-IR");
 
 document.getElementById("trySell").textContent=
 Number(tr.sell).toLocaleString("fa-IR");
-
 }
-
 
 document.getElementById("status").textContent=
 "آخرین بروزرسانی: "+
 new Date().toLocaleTimeString("fa-IR");
-
-document.getElementById("status").classList.remove("error");
-
 
 }catch(e){
 
@@ -276,12 +219,11 @@ console.error(e);
 document.getElementById("status").textContent=
 "خطا: "+e.message;
 
-document.getElementById("status").classList.add("error");
+document.getElementById("status").className="error";
 
 }
 
 }
-
 
 load();
 
