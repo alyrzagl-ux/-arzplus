@@ -25,9 +25,7 @@ color:#f5f5f5;
 }
 
 header{
-background:
-radial-gradient(circle at center,rgba(212,175,55,.12),transparent 55%),
-#080808;
+background:radial-gradient(circle at center,rgba(212,175,55,.12),transparent 55%),#080808;
 color:white;
 text-align:center;
 padding:32px 20px 28px;
@@ -184,52 +182,65 @@ font-size:11px;
 scroll-margin-top:20px;
 }
 
-#calcDisplay{
+.calc-input{
 width:100%;
 height:42px;
+box-sizing:border-box;
 border:1px solid rgba(212,175,55,.3);
 border-radius:8px;
-margin-bottom:7px;
+padding:8px;
 font-size:17px;
-text-align:left;
-direction:ltr;
-padding:5px 8px;
 background:#0b0b0b;
 color:#d4af37;
+direction:ltr;
+outline:none;
 }
 
-.calcButtons{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:4px;
+.calc-rate{
+background:#0b0b0b;
+border:1px solid rgba(212,175,55,.2);
+border-radius:10px;
+padding:12px;
+margin-bottom:10px;
 }
 
-.calcButtons button{
-height:34px;
-border:0;
-border-radius:7px;
-background:#1a1a1a;
-color:#eee;
-font-size:14px;
+.calc-rate-label{
+color:#888;
+font-size:11px;
+}
+
+.calc-rate-value{
+color:#d4af37;
+font-size:20px;
 font-weight:bold;
-padding:0;
-cursor:pointer;
+margin-top:5px;
 }
 
-.calcButtons button:active{
-transform:scale(.95);
+.calc-result{
+background:#111;
+border-radius:10px;
+padding:15px;
+text-align:center;
 }
 
-.operator{
-background:#24200f!important;
-color:#d4af37!important;
+.calc-result-label{
+color:#999;
+font-size:11px;
 }
 
-.equal{
-grid-column:span 4;
-height:32px;
-background:#d4af37!important;
-color:#080808!important;
+.calc-result-value{
+color:#d4af37;
+font-size:26px;
+font-weight:bold;
+margin-top:6px;
+}
+
+.calc-warning{
+text-align:center;
+color:#999;
+font-size:11px;
+line-height:1.8;
+margin-top:12px;
 }
 
 .contact{
@@ -366,13 +377,13 @@ class="card calculator-link"
 onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})"
 >
 
-<div class="calc-icon">🧮</div>
+<div class="calc-icon">💵</div>
 
 <div class="calc-text">
 
-<strong>ماشین حساب</strong>
+<strong>محاسبه دلار</strong>
 
-<small>برای محاسبات سریع کلیک کنید</small>
+<small>محاسبه با نرخ لحظه‌ای دلار</small>
 
 </div>
 
@@ -381,38 +392,65 @@ onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'
 
 <div class="card calculator" id="calculator">
 
-<div class="title">🧮 ماشین حساب</div>
+<div class="title">💵 محاسبه دلار</div>
+
+<div style="margin-bottom:12px">
+
+<label style="display:block;color:#aaa;font-size:12px;margin-bottom:6px">
+مقدار دلار
+</label>
 
 <input
-type="text"
-id="calcDisplay"
-readonly
-placeholder="0"
+type="number"
+id="dollarAmount"
+class="calc-input"
+placeholder="مثلاً 100"
+inputmode="decimal"
+oninput="calculateDollar()"
 >
 
-<div class="calcButtons">
+</div>
 
-<button onclick="calcPress('7')">7</button>
-<button onclick="calcPress('8')">8</button>
-<button onclick="calcPress('9')">9</button>
-<button class="operator" onclick="calcPress('/')">÷</button>
 
-<button onclick="calcPress('4')">4</button>
-<button onclick="calcPress('5')">5</button>
-<button onclick="calcPress('6')">6</button>
-<button class="operator" onclick="calcPress('*')">×</button>
+<div class="calc-rate">
 
-<button onclick="calcPress('1')">1</button>
-<button onclick="calcPress('2')">2</button>
-<button onclick="calcPress('3')">3</button>
-<button class="operator" onclick="calcPress('-')">−</button>
+<div class="calc-rate-label">
+نرخ فروش لحظه‌ای دلار
+</div>
 
-<button onclick="calcPress('0')">0</button>
-<button onclick="calcPress('.')">.</button>
-<button onclick="calcClear()">C</button>
-<button class="operator" onclick="calcPress('+')">+</button>
+<div
+id="calculatorRate"
+class="calc-rate-value"
+>
+---
+</div>
 
-<button class="equal" onclick="calcResult()">=</button>
+<span class="unit">تومان</span>
+
+</div>
+
+
+<div class="calc-result">
+
+<div class="calc-result-label">
+مبلغ تقریبی
+</div>
+
+<div
+id="dollarResult"
+class="calc-result-value"
+>
+0
+</div>
+
+<span class="unit">تومان</span>
+
+</div>
+
+
+<div class="calc-warning">
+
+⚠️ این قیمت حدودی است؛ جهت معامله دقیق‌تر تماس بگیرید.
 
 </div>
 
@@ -424,77 +462,80 @@ placeholder="0"
 <h2>📞 تماس با ما</h2>
 
 <a href="tel:09034966597">
+
 مسعود نیک‌فرجام
+
 <br>
+
 0903 496 6597
+
 </a>
 
 <a href="tel:09933747293">
+
 علیرضا گل‌محمدی
+
 <br>
+
 0993 374 7293
+
 </a>
 
 <a href="https://t.me/ArzPlusMarket" target="_blank">
+
 📲 کانال تلگرام ArzPlusMarket
+
 </a>
 
 </div>
 
 
 <div id="status">
+
 در حال دریافت نرخ ارز...
+
 </div>
 
 </div>
 
 <footer>
+
 © 2026 نیک فرجام | ARZ PLUS
+
 </footer>
 
 
 <script>
 
-function calcPress(value){
+let dollarSellRate=0;
 
-const display=document.getElementById("calcDisplay");
 
-if(display.value==="خطا"){
-display.value="";
-}
+function calculateDollar(){
 
-display.value+=value;
+const amount=
+Number(document.getElementById("dollarAmount").value);
 
-}
+const result=
+document.getElementById("dollarResult");
 
-function calcClear(){
+if(!amount || !dollarSellRate){
 
-document.getElementById("calcDisplay").value="";
+result.textContent="0";
 
-}
-
-function calcResult(){
-
-const display=document.getElementById("calcDisplay");
-
-try{
-
-if(!display.value){
 return;
-}
-
-display.value=eval(display.value);
-
-}catch{
-
-display.value="خطا";
 
 }
 
+const total=
+amount*dollarSellRate;
+
+result.textContent=
+total.toLocaleString("fa-IR");
+
 }
 
 
-const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
+const API_KEY="اینجا کلید API جدید را وارد کن";
 
 const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
@@ -539,6 +580,14 @@ Number(usd.buy).toLocaleString("fa-IR");
 
 document.getElementById("usdSell").textContent=
 Number(usd.sell).toLocaleString("fa-IR");
+
+dollarSellRate=
+Number(usd.sell)||0;
+
+document.getElementById("calculatorRate").textContent=
+dollarSellRate.toLocaleString("fa-IR");
+
+calculateDollar();
 
 }
 
