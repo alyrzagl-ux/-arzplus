@@ -317,6 +317,28 @@ padding:18px;
 </div>
 
 
+<!-- طلای ۱۸ عیار -->
+<div class="card">
+<div class="title">🥇 طلای ۱۸ عیار</div>
+
+<div class="prices">
+
+<div class="box">
+<small>قیمت هر گرم</small>
+<div class="price buy" id="gold18Price">---</div>
+<span class="unit">تومان</span>
+</div>
+
+<div class="box">
+<small>عیار</small>
+<div class="price sell">۷۵۰</div>
+<span class="unit">۱۸ عیار</span>
+</div>
+
+</div>
+</div>
+
+
 <!-- مبدل -->
 <div class="card" id="converter">
 
@@ -438,13 +460,23 @@ TRY:{buy:0,sell:0}
 
 
 /* =====================
-   کلید API
+   کلید API نت ارز
 ===================== */
 
 const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
 
 const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
+
+
+/* =====================
+   کلید API Tindex
+===================== */
+
+const TINDEX_API_TOKEN="601|rHPRj8obu9h8I28JupThPB1dXMljgyrzFmJNPDgC35a18b93"
+
+const TINDEX_API=
+"https://tindex.app/api/public/indicators/by-category/precious-metals";
 
 
 let rates={
@@ -506,7 +538,7 @@ amount&&r
 
 
 /* =====================
-   دریافت قیمت
+   دریافت قیمت ارز
 ===================== */
 
 async function load(){
@@ -568,6 +600,14 @@ rates.TRY.sell.toLocaleString("fa-IR");
 
 updateConverter();
 
+
+/* =====================
+   دریافت طلای ۱۸ عیار
+===================== */
+
+await loadGold18();
+
+
 status.textContent=
 "آخرین بروزرسانی: "+
 new Date().toLocaleTimeString("fa-IR");
@@ -576,6 +616,8 @@ status.classList.remove("error");
 
 }catch(e){
 
+console.error(e);
+
 status.textContent="خطا: "+e.message;
 status.classList.add("error");
 
@@ -583,7 +625,86 @@ status.classList.add("error");
 
 }
 
+
+/* =====================
+   طلای ۱۸ عیار Tindex
+===================== */
+
+async function loadGold18(){
+
+try{
+
+let response=await fetch(TINDEX_API,{
+headers:{
+"Authorization":"Bearer "+TINDEX_API_TOKEN,
+"Accept":"application/json"
+}
+});
+
+let json=await response.json();
+
+if(!response.ok)
+throw new Error("خطای دریافت قیمت طلا");
+
+if(!json.success)
+throw new Error("Tindex خطا داد");
+
+let rows=
+json.data &&
+Array.isArray(json.data.rows)
+?json.data.rows
+:[];
+
+
+/* پیدا کردن GOLD-18K */
+
+let gold=rows.find(item=>
+item.slug==="GOLD-18K" ||
+item.code==="GOLD-18K"
+);
+
+if(!gold)
+throw new Error("طلای ۱۸ عیار پیدا نشد");
+
+
+/* پیدا کردن قیمت */
+
+let price=
+gold.price ??
+gold.value ??
+gold.last ??
+gold.current_price;
+
+
+if(price===undefined || price===null)
+throw new Error("قیمت طلای ۱۸ عیار موجود نیست");
+
+
+document.getElementById("gold18Price").textContent=
+Number(price).toLocaleString("fa-IR");
+
+}catch(e){
+
+console.error("Gold Error:",e);
+
+document.getElementById("gold18Price").textContent=
+"---";
+
+}
+
+}
+
+
+/* =====================
+   اجرای اولیه
+===================== */
+
 load();
+
+
+/* =====================
+   بروزرسانی هر ۵ دقیقه
+===================== */
 
 setInterval(load,300000);
 
