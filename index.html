@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>نیک فرجام | نرخ ارز و طلا</title>
@@ -35,6 +33,23 @@ max-width:600px;
 margin:20px auto;
 padding:10px;
 }
+
+/* هشدار نوسانات */
+
+.notice{
+background:#fff7ed;
+color:#9a3412;
+text-align:center;
+padding:12px 15px;
+margin:15px auto;
+max-width:570px;
+border-radius:12px;
+font-size:13px;
+font-weight:bold;
+line-height:1.8;
+}
+
+/* کارت‌ها */
 
 .card{
 background:white;
@@ -89,10 +104,7 @@ margin:20px;
 color:red!important;
 }
 
-
-/* =========================
-   ماشین حساب کوچک
-========================= */
+/* ماشین حساب کوچک */
 
 .calculator{
 padding:12px;
@@ -149,10 +161,7 @@ background:#111827;
 color:white;
 }
 
-
-/* =========================
-   تماس
-========================= */
+/* تماس */
 
 .contact{
 background:#111827;
@@ -179,7 +188,6 @@ font-weight:bold;
 
 </head>
 
-
 <body>
 
 
@@ -192,12 +200,19 @@ font-weight:bold;
 </header>
 
 
+<!-- هشدار بازار -->
+
+<div class="notice">
+
+⚠️ به دلیل نوسانات شدید بازار، جهت معامله و استعلام قیمت لحظه‌ای تماس بگیرید.
+
+</div>
+
+
 <div class="container">
 
 
-<!-- =========================
-     ماشین حساب
-========================= -->
+<!-- ماشین حساب -->
 
 <div class="card calculator">
 
@@ -239,9 +254,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     دلار
-========================= -->
+<!-- دلار -->
 
 <div class="card">
 
@@ -259,7 +272,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -275,9 +287,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     یورو
-========================= -->
+<!-- یورو -->
 
 <div class="card">
 
@@ -295,7 +305,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -311,9 +320,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     لیر
-========================= -->
+<!-- لیر -->
 
 <div class="card">
 
@@ -331,7 +338,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -347,9 +353,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     طلای ۱۸ عیار
-========================= -->
+<!-- طلای ۱۸ عیار -->
 
 <div class="card">
 
@@ -367,7 +371,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -383,9 +386,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     سکه امامی
-========================= -->
+<!-- سکه امامی -->
 
 <div class="card">
 
@@ -403,7 +404,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -419,9 +419,7 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     نقره
-========================= -->
+<!-- نقره -->
 
 <div class="card">
 
@@ -439,7 +437,6 @@ placeholder="0"
 
 </div>
 
-
 <div class="box">
 
 <small>فروش</small>
@@ -455,14 +452,11 @@ placeholder="0"
 </div>
 
 
-<!-- =========================
-     تماس
-========================= -->
+<!-- تماس -->
 
 <div class="card contact">
 
 <h2>📞 تماس با ما</h2>
-
 
 <a href="tel:09034966597">
 
@@ -474,7 +468,6 @@ placeholder="0"
 
 </a>
 
-
 <a href="tel:09933747293">
 
 علیرضا گل‌محمدی
@@ -484,7 +477,6 @@ placeholder="0"
 0993 374 7293
 
 </a>
-
 
 <a href="https://t.me/ArzPlusMarket">
 
@@ -548,7 +540,7 @@ return;
 
 }
 
-display.value = eval(display.value);
+display.value=eval(display.value);
 
 }catch{
 
@@ -564,7 +556,7 @@ display.value="خطا";
 ========================= */
 
 
-/* فقط کلید API جدیدت را اینجا بگذار */
+/* کلید API جدیدت را فقط اینجا وارد کن */
 
 const API_KEY="اینجا کلید API جدید را وارد کن";
 
@@ -611,14 +603,11 @@ throw new Error(
 const data=j.data || [];
 
 
-const usd =
-data.find(x=>x.code==="USD");
+const usd=data.find(x=>x.code==="USD");
 
-const eur =
-data.find(x=>x.code==="EUR");
+const eur=data.find(x=>x.code==="EUR");
 
-const tr =
-data.find(x=>x.code==="TRY");
+const tr=data.find(x=>x.code==="TRY");
 
 
 if(usd){
@@ -626,7 +615,6 @@ if(usd){
 document.getElementById("usdBuy").textContent=
 
 Number(usd.buy).toLocaleString("fa-IR");
-
 
 document.getElementById("usdSell").textContent=
 
@@ -641,7 +629,6 @@ document.getElementById("eurBuy").textContent=
 
 Number(eur.buy).toLocaleString("fa-IR");
 
-
 document.getElementById("eurSell").textContent=
 
 Number(eur.sell).toLocaleString("fa-IR");
@@ -655,15 +642,12 @@ document.getElementById("tryBuy").textContent=
 
 Number(tr.buy).toLocaleString("fa-IR");
 
-
 document.getElementById("trySell").textContent=
 
 Number(tr.sell).toLocaleString("fa-IR");
 
 }
 
-
-/* سکه، طلا و نقره فعلاً دستی/خالی هستند */
 
 document.getElementById("status").textContent=
 
@@ -680,11 +664,9 @@ document.getElementById("status")
 
 console.error(e);
 
-
 document.getElementById("status").textContent=
 
 "خطا: "+e.message;
-
 
 document.getElementById("status")
 .classList.add("error");
