@@ -5,276 +5,197 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>نیک فرجام | ارز پلاس</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>نیک فرجام | ARZ PLUS</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:"Vazirmatn",Tahoma,Arial,sans-serif;
-background:#050505;
-color:#f5f5f5;
+font-family:Tahoma,Arial,sans-serif;
+background:#050606;
+color:#eee;
 }
 
 header{
-background:radial-gradient(circle at center,rgba(212,175,55,.12),transparent 55%),#080808;
 text-align:center;
-padding:32px 20px 28px;
-border-bottom:1px solid rgba(212,175,55,.3);
+padding:30px 15px;
+background:linear-gradient(145deg,#050505,#0d1210);
+border-bottom:1px solid #8d7220;
 }
 
 header h1{
-margin:0 0 5px;
-font-family:"Noto Naskh Arabic",serif;
-font-size:48px;
-font-weight:700;
+margin:0;
+font-size:42px;
 color:#d4af37;
-text-shadow:0 0 25px rgba(212,175,55,.2);
+font-family:serif;
 }
 
 header h2{
-margin:0;
-font-size:15px;
+margin:3px 0;
+font-size:13px;
 letter-spacing:4px;
 color:#d4af37;
-font-weight:700;
 }
 
 header p{
-margin:12px 0 0;
+margin:10px 0 0;
+font-size:12px;
 color:#999;
-font-size:13px;
 }
 
 .notice{
-background:#100f0b;
-color:#d4af37;
-text-align:center;
-padding:12px 15px;
-margin:15px auto;
 max-width:570px;
-border:1px solid rgba(212,175,55,.25);
-border-radius:12px;
+margin:15px auto;
+padding:11px;
+text-align:center;
 font-size:12px;
-font-weight:600;
 line-height:1.8;
+color:#d4af37;
+background:#11130f;
+border:1px solid #51451d;
+border-radius:12px;
 }
 
 .container{
 max-width:600px;
-margin:20px auto;
+margin:auto;
 padding:10px;
 }
 
 .card{
-background:linear-gradient(145deg,#111,#080808);
-border:1px solid rgba(212,175,55,.28);
+background:linear-gradient(145deg,#111514,#080a09);
+border:1px solid #3d3921;
 border-radius:15px;
-padding:18px;
-margin-bottom:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.35);
+padding:17px;
+margin-bottom:14px;
+box-shadow:0 5px 18px #0008;
 }
 
 .title{
-font-size:18px;
+font-size:17px;
 font-weight:bold;
-margin-bottom:15px;
+margin-bottom:13px;
 }
 
 .prices{
 display:flex;
-gap:10px;
+gap:9px;
 }
 
 .box{
 flex:1;
-background:#0d0d0d;
-border:1px solid rgba(212,175,55,.16);
-border-radius:10px;
-padding:12px;
+padding:12px 8px;
 text-align:center;
+background:#0b0e0d;
+border-radius:10px;
 }
 
 .box small{
 display:block;
-color:#999;
-margin-bottom:8px;
+color:#888;
+font-size:11px;
+margin-bottom:7px;
 }
 
 .price{
 font-size:20px;
 font-weight:bold;
-color:#d4af37;
 }
+
+.buy{color:#24c88a}
+.sell{color:#e56b6f}
 
 .unit{
-font-size:11px;
+font-size:10px;
 color:#777;
 }
 
-#status{
-text-align:center;
-color:#777;
-margin:20px;
+label{
+display:block;
 font-size:12px;
+color:#999;
+margin:10px 0 6px;
 }
 
-.error{
-color:#e57373!important;
-}
-
-.converter-link{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-background:linear-gradient(145deg,#151515,#090909);
-cursor:pointer;
-padding:12px 15px;
-border:1px solid rgba(212,175,55,.4);
-}
-
-.converter-link:active{
-transform:scale(.98);
-}
-
-.converter-icon{
-font-size:29px;
-background:#d4af37;
-color:#111;
-border-radius:10px;
-padding:7px 9px;
-line-height:1;
-order:2;
-}
-
-.converter-text{
-flex:1;
-text-align:right;
-}
-
-.converter-text strong{
-display:block;
-font-size:17px;
-color:#d4af37;
-margin-bottom:3px;
-}
-
-.converter-text small{
-display:block;
-color:#aaa;
-font-size:11px;
-}
-
-select,
-.converter-input{
+select,input{
 width:100%;
-height:44px;
-border:1px solid rgba(212,175,55,.3);
+height:43px;
+padding:8px;
 border-radius:9px;
-padding:8px 10px;
-font-size:15px;
-background:#0b0b0b;
+border:1px solid #51451d;
+background:#090b0a;
 color:#eee;
-outline:none;
-font-family:inherit;
+font-size:14px;
 }
 
-.converter-input{
+input{
 direction:ltr;
 }
 
-.form-label{
-display:block;
-color:#aaa;
-font-size:12px;
-margin-bottom:6px;
-}
-
-.form-group{
-margin-bottom:13px;
-}
-
-.type-buttons{
+.buttons{
 display:flex;
 gap:8px;
 }
 
-.type-button{
+.buttons button{
 flex:1;
 height:42px;
-border:1px solid rgba(212,175,55,.25);
 border-radius:9px;
-background:#0d0d0d;
-color:#aaa;
-font-family:inherit;
+border:1px solid #333;
+background:#0b0e0d;
+color:#999;
 font-weight:bold;
-cursor:pointer;
 }
 
-.type-button.active{
-background:#d4af37;
-color:#080808;
-border-color:#d4af37;
+.buttons .active-buy{
+background:#174d3b;
+border-color:#24c88a;
+color:#42dda2;
 }
 
-.converter-rate{
-background:#0b0b0b;
-border:1px solid rgba(212,175,55,.18);
-border-radius:10px;
+.buttons .active-sell{
+background:#4a2022;
+border-color:#e56b6f;
+color:#ff8589;
+}
+
+.rate{
+margin-top:13px;
 padding:12px;
 text-align:center;
-margin-top:5px;
-}
-
-.converter-rate small{
-display:block;
-color:#888;
-font-size:11px;
-}
-
-.converter-rate strong{
-display:block;
-color:#d4af37;
-font-size:21px;
-margin-top:5px;
-}
-
-.converter-result{
-margin-top:10px;
-background:#111;
+background:#0a0d0c;
 border-radius:10px;
-padding:15px;
-text-align:center;
 }
 
-.converter-result small{
+.rate strong{
 display:block;
-color:#999;
-font-size:11px;
-}
-
-.converter-result strong{
-display:block;
+font-size:21px;
 color:#d4af37;
-font-size:27px;
-margin-top:5px;
+margin-top:4px;
 }
 
-.converter-warning{
+.result{
+margin-top:9px;
+padding:14px;
 text-align:center;
-color:#999;
+background:#101513;
+border-radius:10px;
+}
+
+.result strong{
+display:block;
+font-size:26px;
+color:#24c88a;
+margin-top:4px;
+}
+
+.warning{
+text-align:center;
 font-size:11px;
+color:#888;
 line-height:1.8;
-margin-top:12px;
+margin-top:10px;
 }
 
 .contact{
@@ -282,265 +203,188 @@ text-align:center;
 }
 
 .contact h2{
-margin-top:0;
 color:#d4af37;
+margin-top:0;
 }
 
 .contact a{
 display:block;
-background:#0d0d0d;
-border:1px solid rgba(212,175,55,.25);
+padding:11px;
+margin-top:9px;
+border-radius:9px;
+background:#0b0e0d;
+border:1px solid #3d3921;
 color:#eee;
 text-decoration:none;
-padding:12px;
-border-radius:10px;
-margin-top:10px;
 font-weight:bold;
 }
 
-.contact a:hover{
-border-color:#d4af37;
-color:#d4af37;
+#status{
+text-align:center;
+font-size:11px;
+color:#777;
+margin:18px;
 }
+
+.error{color:#e56b6f!important}
 
 footer{
 text-align:center;
-color:#666;
-font-size:11px;
-padding:20px;
-border-top:1px solid rgba(212,175,55,.12);
+font-size:10px;
+color:#555;
+padding:18px;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>نیک‌فرجام</h1>
-
+<h1>نیک فرجام</h1>
 <h2>ARZ PLUS</h2>
-
 <p>نرخ لحظه‌ای ارز</p>
-
 </header>
 
 <div class="notice">
-
 ⚠️ به دلیل نوسانات بازار، جهت معامله و استعلام قیمت لحظه‌ای تماس بگیرید.
-
 </div>
 
 <div class="container">
 
-
 <!-- دلار -->
-
 <div class="card">
-
 <div class="title">🇺🇸 دلار آمریکا</div>
 
 <div class="prices">
 
 <div class="box">
-<small>خرید</small>
-<div class="price" id="usdBuy">---</div>
+<small>خرید ما از شما</small>
+<div class="price buy" id="usdBuy">---</div>
 <span class="unit">تومان</span>
 </div>
 
 <div class="box">
-<small>فروش</small>
-<div class="price" id="usdSell">---</div>
+<small>فروش ما به شما</small>
+<div class="price sell" id="usdSell">---</div>
 <span class="unit">تومان</span>
 </div>
 
 </div>
-
 </div>
 
 
 <!-- یورو -->
-
 <div class="card">
-
 <div class="title">🇪🇺 یورو</div>
 
 <div class="prices">
 
 <div class="box">
-<small>خرید</small>
-<div class="price" id="eurBuy">---</div>
+<small>خرید ما از شما</small>
+<div class="price buy" id="eurBuy">---</div>
 <span class="unit">تومان</span>
 </div>
 
 <div class="box">
-<small>فروش</small>
-<div class="price" id="eurSell">---</div>
+<small>فروش ما به شما</small>
+<div class="price sell" id="eurSell">---</div>
 <span class="unit">تومان</span>
 </div>
 
 </div>
-
 </div>
 
 
 <!-- لیر -->
-
 <div class="card">
-
 <div class="title">🇹🇷 لیر ترکیه</div>
 
 <div class="prices">
 
 <div class="box">
-<small>خرید</small>
-<div class="price" id="tryBuy">---</div>
+<small>خرید ما از شما</small>
+<div class="price buy" id="tryBuy">---</div>
 <span class="unit">تومان</span>
 </div>
 
 <div class="box">
-<small>فروش</small>
-<div class="price" id="trySell">---</div>
+<small>فروش ما به شما</small>
+<div class="price sell" id="trySell">---</div>
 <span class="unit">تومان</span>
 </div>
 
 </div>
-
 </div>
 
 
-<!-- دکمه مبدل -->
-
-<div
-class="card converter-link"
-onclick="document.getElementById('converter').scrollIntoView({behavior:'smooth'})"
->
-
-<div class="converter-icon">🔄</div>
-
-<div class="converter-text">
-
-<strong>تبدیل ارز</strong>
-
-<small>تبدیل سریع دلار، یورو و لیر به تومان</small>
-
-</div>
-
-</div>
-
-
-<!-- مبدل ارز -->
-
+<!-- مبدل -->
 <div class="card" id="converter">
 
 <div class="title">🔄 تبدیل ارز</div>
 
-
-<div class="form-group">
-
-<label class="form-label">
-انتخاب ارز
-</label>
+<label>انتخاب ارز</label>
 
 <select id="currency" onchange="updateConverter()">
-
 <option value="USD">🇺🇸 دلار آمریکا</option>
-
 <option value="EUR">🇪🇺 یورو</option>
-
 <option value="TRY">🇹🇷 لیر ترکیه</option>
-
 </select>
 
-</div>
 
+<label>نوع معامله</label>
 
-<div class="form-group">
-
-<label class="form-label">
-نوع معامله
-</label>
-
-<div class="type-buttons">
+<div class="buttons">
 
 <button
-id="buyButton"
-class="type-button active"
-onclick="setTradeType('buy')"
->
-خرید
+id="buyBtn"
+class="active-buy"
+onclick="setType('buy')">
+فروش ارز به ما
 </button>
 
 <button
-id="sellButton"
-class="type-button"
-onclick="setTradeType('sell')"
->
-فروش
+id="sellBtn"
+onclick="setType('sell')">
+خرید ارز از ما
 </button>
 
 </div>
 
-</div>
 
-
-<div class="form-group">
-
-<label class="form-label">
-مقدار ارز
-</label>
+<label>مقدار ارز</label>
 
 <input
-type="number"
 id="amount"
-class="converter-input"
+type="number"
 placeholder="مثلاً 100"
-inputmode="decimal"
-oninput="calculateConversion()"
+oninput="calculate()"
 >
 
-</div>
 
+<div class="rate">
 
-<div class="converter-rate">
-
-<small>
 نرخ لحظه‌ای
-</small>
 
-<strong id="converterRate">
----
-</strong>
+<strong id="converterRate">---</strong>
 
-<span class="unit">
-تومان
-</span>
+<span class="unit">تومان</span>
 
 </div>
 
 
-<div class="converter-result">
+<div class="result">
 
-<small>
 مبلغ تقریبی
-</small>
 
-<strong id="converterResult">
-0
-</strong>
+<strong id="result">0</strong>
 
-<span class="unit">
-تومان
-</span>
+<span class="unit">تومان</span>
 
 </div>
 
 
-<div class="converter-warning">
-
+<div class="warning">
 ⚠️ این قیمت حدودی است؛ جهت معامله دقیق‌تر تماس بگیرید.
-
 </div>
 
 </div>
@@ -553,121 +397,49 @@ oninput="calculateConversion()"
 <h2>📞 تماس با ما</h2>
 
 <a href="tel:09034966597">
-
-مسعود نیک‌فرجام
-
-<br>
-
+مسعود نیک فرجام<br>
 0903 496 6597
-
 </a>
 
 <a href="tel:09933747293">
-
-علیرضا گل‌محمدی
-
-<br>
-
+علیرضا گل محمدی<br>
 0993 374 7293
-
 </a>
 
 <a href="https://t.me/ArzPlusMarket" target="_blank">
-
 📲 کانال تلگرام ArzPlusMarket
-
 </a>
 
 </div>
 
 
 <div id="status">
-
 در حال دریافت نرخ ارز...
-
 </div>
 
 </div>
-
 
 <footer>
-
 © 2026 نیک فرجام | ARZ PLUS
-
 </footer>
 
 
 <script>
 
-let rates={
-USD:{buy:0,sell:0},
+/* =====================
+   تنظیم اختلاف قیمت
+===================== */
+
+const SETTINGS={
+USD:{buy:200,sell:0},
 EUR:{buy:0,sell:0},
 TRY:{buy:0,sell:0}
 };
 
-let tradeType="buy";
 
-
-function setTradeType(type){
-
-tradeType=type;
-
-document.getElementById("buyButton")
-.classList.toggle("active",type==="buy");
-
-document.getElementById("sellButton")
-.classList.toggle("active",type==="sell");
-
-updateConverter();
-
-}
-
-
-function updateConverter(){
-
-const currency=
-document.getElementById("currency").value;
-
-const rate=
-rates[currency][tradeType]||0;
-
-document.getElementById("converterRate").textContent=
-rate
-?rate.toLocaleString("fa-IR")
-:"---";
-
-calculateConversion();
-
-}
-
-
-function calculateConversion(){
-
-const currency=
-document.getElementById("currency").value;
-
-const amount=
-Number(document.getElementById("amount").value);
-
-const rate=
-rates[currency][tradeType]||0;
-
-const result=
-document.getElementById("converterResult");
-
-if(!amount||!rate){
-
-result.textContent="0";
-
-return;
-
-}
-
-result.textContent=
-(amount*rate).toLocaleString("fa-IR");
-
-}
-
+/* =====================
+   کلید API
+===================== */
 
 const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
 
@@ -675,105 +447,141 @@ const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
 
 
+let rates={
+USD:{buy:0,sell:0},
+EUR:{buy:0,sell:0},
+TRY:{buy:0,sell:0}
+};
+
+let type="buy";
+
+
+/* =====================
+   مبدل
+===================== */
+
+function setType(x){
+
+type=x;
+
+buyBtn.className=x==="buy"?"active-buy":"";
+sellBtn.className=x==="sell"?"active-sell":"";
+
+updateConverter();
+}
+
+
+function updateConverter(){
+
+let c=currency.value;
+
+let r=type==="buy"
+?rates[c].buy
+:rates[c].sell;
+
+converterRate.textContent=
+r?r.toLocaleString("fa-IR"):"---";
+
+calculate();
+}
+
+
+function calculate(){
+
+let c=currency.value;
+
+let amount=Number(
+document.getElementById("amount").value
+);
+
+let r=type==="buy"
+?rates[c].buy
+:rates[c].sell;
+
+result.textContent=
+amount&&r
+?(amount*r).toLocaleString("fa-IR")
+:"0";
+}
+
+
+/* =====================
+   دریافت قیمت
+===================== */
+
 async function load(){
 
 try{
 
-const r=await fetch(API,{
-
+let response=await fetch(API,{
 headers:{
 "Authorization":"Bearer "+API_KEY,
 "Accept":"application/json"
 }
+});
+
+let json=await response.json();
+
+if(!response.ok)
+throw new Error(
+json.error?.message||"خطای دریافت نرخ"
+);
+
+let data=json.data||[];
+
+["USD","EUR","TRY"].forEach(code=>{
+
+let x=data.find(i=>i.code===code);
+
+if(!x)return;
+
+let baseBuy=Number(x.buy)||0;
+let baseSell=Number(x.sell)||0;
+
+rates[code].buy=
+baseBuy+SETTINGS[code].buy;
+
+rates[code].sell=
+baseSell+SETTINGS[code].sell;
 
 });
 
-const j=await r.json();
 
-if(!r.ok){
-
-throw new Error(
-(j.error?.code||"ERROR")+
-" - "+
-(j.error?.message||"خطای دریافت نرخ")
-);
-
-}
-
-const data=j.data||[];
-
-const usd=data.find(x=>x.code==="USD");
-const eur=data.find(x=>x.code==="EUR");
-const tr=data.find(x=>x.code==="TRY");
-
-
-if(usd){
-
-rates.USD.buy=Number(usd.buy)||0;
-rates.USD.sell=Number(usd.sell)||0;
-
-document.getElementById("usdBuy").textContent=
+usdBuy.textContent=
 rates.USD.buy.toLocaleString("fa-IR");
 
-document.getElementById("usdSell").textContent=
+usdSell.textContent=
 rates.USD.sell.toLocaleString("fa-IR");
 
-}
-
-
-if(eur){
-
-rates.EUR.buy=Number(eur.buy)||0;
-rates.EUR.sell=Number(eur.sell)||0;
-
-document.getElementById("eurBuy").textContent=
+eurBuy.textContent=
 rates.EUR.buy.toLocaleString("fa-IR");
 
-document.getElementById("eurSell").textContent=
+eurSell.textContent=
 rates.EUR.sell.toLocaleString("fa-IR");
 
-}
-
-
-if(tr){
-
-rates.TRY.buy=Number(tr.buy)||0;
-rates.TRY.sell=Number(tr.sell)||0;
-
-document.getElementById("tryBuy").textContent=
+tryBuy.textContent=
 rates.TRY.buy.toLocaleString("fa-IR");
 
-document.getElementById("trySell").textContent=
+trySell.textContent=
 rates.TRY.sell.toLocaleString("fa-IR");
-
-}
 
 
 updateConverter();
 
-
-document.getElementById("status").textContent=
+status.textContent=
 "آخرین بروزرسانی: "+
 new Date().toLocaleTimeString("fa-IR");
 
-document.getElementById("status")
-.classList.remove("error");
-
+status.classList.remove("error");
 
 }catch(e){
 
-console.error(e);
-
-document.getElementById("status").textContent=
-"خطا: "+e.message;
-
-document.getElementById("status")
-.classList.add("error");
+status.textContent="خطا: "+e.message;
+status.classList.add("error");
 
 }
 
 }
-
 
 load();
 
@@ -782,5 +590,4 @@ setInterval(load,300000);
 </script>
 
 </body>
-
 </html>
