@@ -1,9 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>نیک فرجام | نرخ ارز</title>
+
+<title>نیک فرجام | نرخ ارز و طلا</title>
 
 <style>
 
@@ -85,39 +90,47 @@ color:red!important;
 }
 
 
-/* ماشین حساب */
+/* =========================
+   ماشین حساب کوچک
+========================= */
 
 .calculator{
-text-align:center;
+padding:12px;
+}
+
+.calculator .title{
+font-size:15px;
+margin-bottom:8px;
 }
 
 #calcDisplay{
 width:100%;
 box-sizing:border-box;
-height:45px;
+height:36px;
 border:1px solid #ddd;
-border-radius:10px;
-margin-bottom:12px;
-font-size:20px;
+border-radius:8px;
+margin-bottom:7px;
+font-size:17px;
 text-align:left;
 direction:ltr;
-padding:8px;
+padding:5px 8px;
 background:#f5f5f5;
 }
 
 .calcButtons{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:7px;
+gap:4px;
 }
 
 .calcButtons button{
-height:42px;
+height:32px;
 border:0;
-border-radius:9px;
+border-radius:7px;
 background:#f3f4f6;
-font-size:18px;
+font-size:14px;
 font-weight:bold;
+padding:0;
 cursor:pointer;
 }
 
@@ -131,12 +144,15 @@ background:#e5e7eb;
 
 .calcButtons .equal{
 grid-column:span 4;
+height:30px;
 background:#111827;
 color:white;
 }
 
 
-/* تماس */
+/* =========================
+   تماس
+========================= */
 
 .contact{
 background:#111827;
@@ -163,13 +179,15 @@ font-weight:bold;
 
 </head>
 
+
 <body>
+
 
 <header>
 
 <h1>نیک فرجام</h1>
 
-<p>نرخ لحظه‌ای ارز</p>
+<p>نرخ لحظه‌ای ارز و طلا</p>
 
 </header>
 
@@ -177,7 +195,9 @@ font-weight:bold;
 <div class="container">
 
 
-<!-- ماشین حساب -->
+<!-- =========================
+     ماشین حساب
+========================= -->
 
 <div class="card calculator">
 
@@ -219,7 +239,9 @@ placeholder="0"
 </div>
 
 
-<!-- دلار -->
+<!-- =========================
+     دلار
+========================= -->
 
 <div class="card">
 
@@ -253,7 +275,9 @@ placeholder="0"
 </div>
 
 
-<!-- یورو -->
+<!-- =========================
+     یورو
+========================= -->
 
 <div class="card">
 
@@ -287,7 +311,9 @@ placeholder="0"
 </div>
 
 
-<!-- لیر -->
+<!-- =========================
+     لیر
+========================= -->
 
 <div class="card">
 
@@ -321,7 +347,117 @@ placeholder="0"
 </div>
 
 
-<!-- تماس -->
+<!-- =========================
+     طلای ۱۸ عیار
+========================= -->
+
+<div class="card">
+
+<div class="title">🟡 طلای ۱۸ عیار</div>
+
+<div class="prices">
+
+<div class="box">
+
+<small>خرید</small>
+
+<div class="price" id="goldBuy">---</div>
+
+<span class="unit">تومان / گرم</span>
+
+</div>
+
+
+<div class="box">
+
+<small>فروش</small>
+
+<div class="price" id="goldSell">---</div>
+
+<span class="unit">تومان / گرم</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     سکه امامی
+========================= -->
+
+<div class="card">
+
+<div class="title">🪙 سکه امامی</div>
+
+<div class="prices">
+
+<div class="box">
+
+<small>خرید</small>
+
+<div class="price" id="coinBuy">---</div>
+
+<span class="unit">تومان</span>
+
+</div>
+
+
+<div class="box">
+
+<small>فروش</small>
+
+<div class="price" id="coinSell">---</div>
+
+<span class="unit">تومان</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     نقره
+========================= -->
+
+<div class="card">
+
+<div class="title">🥈 نقره</div>
+
+<div class="prices">
+
+<div class="box">
+
+<small>خرید</small>
+
+<div class="price" id="silverBuy">---</div>
+
+<span class="unit">تومان / گرم</span>
+
+</div>
+
+
+<div class="box">
+
+<small>فروش</small>
+
+<div class="price" id="silverSell">---</div>
+
+<span class="unit">تومان / گرم</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     تماس
+========================= -->
 
 <div class="card contact">
 
@@ -378,7 +514,8 @@ placeholder="0"
 
 function calcPress(value){
 
-const display=document.getElementById("calcDisplay");
+const display =
+document.getElementById("calcDisplay");
 
 if(display.value==="خطا"){
 
@@ -386,7 +523,7 @@ display.value="";
 
 }
 
-display.value+=value;
+display.value += value;
 
 }
 
@@ -400,7 +537,8 @@ document.getElementById("calcDisplay").value="";
 
 function calcResult(){
 
-const display=document.getElementById("calcDisplay");
+const display =
+document.getElementById("calcDisplay");
 
 try{
 
@@ -410,7 +548,7 @@ return;
 
 }
 
-display.value=eval(display.value);
+display.value = eval(display.value);
 
 }catch{
 
@@ -426,7 +564,7 @@ display.value="خطا";
 ========================= */
 
 
-/* کلید API جدیدت را فقط اینجا وارد کن */
+/* فقط کلید API جدیدت را اینجا بگذار */
 
 const API_KEY="اینجا کلید API جدید را وارد کن";
 
@@ -473,11 +611,14 @@ throw new Error(
 const data=j.data || [];
 
 
-const usd=data.find(x=>x.code==="USD");
+const usd =
+data.find(x=>x.code==="USD");
 
-const eur=data.find(x=>x.code==="EUR");
+const eur =
+data.find(x=>x.code==="EUR");
 
-const tr=data.find(x=>x.code==="TRY");
+const tr =
+data.find(x=>x.code==="TRY");
 
 
 if(usd){
@@ -522,6 +663,8 @@ Number(tr.sell).toLocaleString("fa-IR");
 }
 
 
+/* سکه، طلا و نقره فعلاً دستی/خالی هستند */
+
 document.getElementById("status").textContent=
 
 "آخرین بروزرسانی: "+
@@ -529,7 +672,8 @@ document.getElementById("status").textContent=
 new Date().toLocaleTimeString("fa-IR");
 
 
-document.getElementById("status").classList.remove("error");
+document.getElementById("status")
+.classList.remove("error");
 
 
 }catch(e){
@@ -542,7 +686,8 @@ document.getElementById("status").textContent=
 "خطا: "+e.message;
 
 
-document.getElementById("status").classList.add("error");
+document.getElementById("status")
+.classList.add("error");
 
 }
 
@@ -558,5 +703,7 @@ setInterval(load,300000);
 
 </script>
 
+
 </body>
+
 </html>
