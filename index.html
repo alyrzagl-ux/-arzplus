@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -28,13 +26,10 @@ header h1{
 margin:0 0 8px;
 }
 
-.container{
-max-width:600px;
-margin:20px auto;
-padding:10px;
+header p{
+margin:0;
+color:#d1d5db;
 }
-
-/* هشدار نوسانات */
 
 .notice{
 background:#fff7ed;
@@ -49,7 +44,11 @@ font-weight:bold;
 line-height:1.8;
 }
 
-/* کارت‌ها */
+.container{
+max-width:600px;
+margin:20px auto;
+padding:10px;
+}
 
 .card{
 background:white;
@@ -98,21 +97,48 @@ color:#777;
 text-align:center;
 color:#777;
 margin:20px;
+font-size:12px;
 }
 
 .error{
 color:red!important;
 }
 
-/* ماشین حساب کوچک */
 
-.calculator{
-padding:12px;
+/* کارت ماشین حساب */
+
+.calculator-link{
+display:flex;
+align-items:center;
+gap:15px;
+background:#111827;
+color:white;
+cursor:pointer;
 }
 
-.calculator .title{
-font-size:15px;
-margin-bottom:8px;
+.calc-icon{
+font-size:42px;
+background:white;
+border-radius:12px;
+padding:8px 12px;
+}
+
+.calculator-link strong{
+display:block;
+font-size:18px;
+margin-bottom:5px;
+}
+
+.calculator-link small{
+color:#d1d5db;
+font-size:12px;
+}
+
+
+/* ماشین حساب */
+
+.calculator{
+scroll-margin-top:20px;
 }
 
 #calcDisplay{
@@ -126,7 +152,6 @@ font-size:17px;
 text-align:left;
 direction:ltr;
 padding:5px 8px;
-background:#f5f5f5;
 }
 
 .calcButtons{
@@ -142,24 +167,18 @@ border-radius:7px;
 background:#f3f4f6;
 font-size:14px;
 font-weight:bold;
-padding:0;
-cursor:pointer;
 }
 
-.calcButtons button:active{
-transform:scale(.95);
+.operator{
+background:#e5e7eb!important;
 }
 
-.calcButtons .operator{
-background:#e5e7eb;
-}
-
-.calcButtons .equal{
+.equal{
 grid-column:span 4;
-height:30px;
-background:#111827;
+background:#111827!important;
 color:white;
 }
+
 
 /* تماس */
 
@@ -167,10 +186,6 @@ color:white;
 background:#111827;
 color:white;
 text-align:center;
-}
-
-.contact h2{
-margin-top:0;
 }
 
 .contact a{
@@ -185,7 +200,6 @@ font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -200,8 +214,6 @@ font-weight:bold;
 </header>
 
 
-<!-- هشدار بازار -->
-
 <div class="notice">
 
 ⚠️ به دلیل نوسانات شدید بازار، جهت معامله و استعلام قیمت لحظه‌ای تماس بگیرید.
@@ -210,48 +222,6 @@ font-weight:bold;
 
 
 <div class="container">
-
-
-<!-- ماشین حساب -->
-
-<div class="card calculator">
-
-<div class="title">🧮 ماشین حساب</div>
-
-<input
-type="text"
-id="calcDisplay"
-readonly
-placeholder="0"
->
-
-<div class="calcButtons">
-
-<button onclick="calcPress('7')">7</button>
-<button onclick="calcPress('8')">8</button>
-<button onclick="calcPress('9')">9</button>
-<button class="operator" onclick="calcPress('/')">÷</button>
-
-<button onclick="calcPress('4')">4</button>
-<button onclick="calcPress('5')">5</button>
-<button onclick="calcPress('6')">6</button>
-<button class="operator" onclick="calcPress('*')">×</button>
-
-<button onclick="calcPress('1')">1</button>
-<button onclick="calcPress('2')">2</button>
-<button onclick="calcPress('3')">3</button>
-<button class="operator" onclick="calcPress('-')">−</button>
-
-<button onclick="calcPress('0')">0</button>
-<button onclick="calcPress('.')">.</button>
-<button onclick="calcClear()">C</button>
-<button class="operator" onclick="calcPress('+')">+</button>
-
-<button class="equal" onclick="calcResult()">=</button>
-
-</div>
-
-</div>
 
 
 <!-- دلار -->
@@ -277,39 +247,6 @@ placeholder="0"
 <small>فروش</small>
 
 <div class="price" id="usdSell">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- یورو -->
-
-<div class="card">
-
-<div class="title">🇪🇺 یورو</div>
-
-<div class="prices">
-
-<div class="box">
-
-<small>خرید</small>
-
-<div class="price" id="eurBuy">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-<div class="box">
-
-<small>فروش</small>
-
-<div class="price" id="eurSell">---</div>
 
 <span class="unit">تومان</span>
 
@@ -365,7 +302,7 @@ placeholder="0"
 
 <small>خرید</small>
 
-<div class="price" id="goldBuy">---</div>
+<div class="price">---</div>
 
 <span class="unit">تومان / گرم</span>
 
@@ -375,42 +312,9 @@ placeholder="0"
 
 <small>فروش</small>
 
-<div class="price" id="goldSell">---</div>
+<div class="price">---</div>
 
 <span class="unit">تومان / گرم</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- سکه امامی -->
-
-<div class="card">
-
-<div class="title">🪙 سکه امامی</div>
-
-<div class="prices">
-
-<div class="box">
-
-<small>خرید</small>
-
-<div class="price" id="coinBuy">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-<div class="box">
-
-<small>فروش</small>
-
-<div class="price" id="coinSell">---</div>
-
-<span class="unit">تومان</span>
 
 </div>
 
@@ -431,7 +335,7 @@ placeholder="0"
 
 <small>خرید</small>
 
-<div class="price" id="silverBuy">---</div>
+<div class="price">---</div>
 
 <span class="unit">تومان / گرم</span>
 
@@ -441,11 +345,73 @@ placeholder="0"
 
 <small>فروش</small>
 
-<div class="price" id="silverSell">---</div>
+<div class="price">---</div>
 
 <span class="unit">تومان / گرم</span>
 
 </div>
+
+</div>
+
+</div>
+
+
+<!-- دکمه ماشین حساب -->
+
+<div
+class="card calculator-link"
+onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})"
+>
+
+<div class="calc-icon">🧮</div>
+
+<div>
+
+<strong>ماشین حساب</strong>
+
+<small>برای محاسبات سریع کلیک کنید</small>
+
+</div>
+
+</div>
+
+
+<!-- ماشین حساب پایین -->
+
+<div class="card calculator" id="calculator">
+
+<div class="title">🧮 ماشین حساب</div>
+
+<input
+type="text"
+id="calcDisplay"
+readonly
+placeholder="0"
+>
+
+<div class="calcButtons">
+
+<button onclick="calcPress('7')">7</button>
+<button onclick="calcPress('8')">8</button>
+<button onclick="calcPress('9')">9</button>
+<button class="operator" onclick="calcPress('/')">÷</button>
+
+<button onclick="calcPress('4')">4</button>
+<button onclick="calcPress('5')">5</button>
+<button onclick="calcPress('6')">6</button>
+<button class="operator" onclick="calcPress('*')">×</button>
+
+<button onclick="calcPress('1')">1</button>
+<button onclick="calcPress('2')">2</button>
+<button onclick="calcPress('3')">3</button>
+<button class="operator" onclick="calcPress('-')">−</button>
+
+<button onclick="calcPress('0')">0</button>
+<button onclick="calcPress('.')">.</button>
+<button onclick="calcClear()">C</button>
+<button class="operator" onclick="calcPress('+')">+</button>
+
+<button class="equal" onclick="calcResult()">=</button>
 
 </div>
 
@@ -459,38 +425,26 @@ placeholder="0"
 <h2>📞 تماس با ما</h2>
 
 <a href="tel:09034966597">
-
 مسعود نیک‌فرجام
-
 <br>
-
 0903 496 6597
-
 </a>
 
 <a href="tel:09933747293">
-
 علیرضا گل‌محمدی
-
 <br>
-
 0993 374 7293
-
 </a>
 
 <a href="https://t.me/ArzPlusMarket">
-
 📲 کانال تلگرام ArzPlusMarket
-
 </a>
 
 </div>
 
 
 <div id="status">
-
 در حال دریافت نرخ ارز...
-
 </div>
 
 
@@ -500,22 +454,15 @@ placeholder="0"
 <script>
 
 
-/* =========================
-   ماشین حساب
-========================= */
+/* ماشین حساب */
 
 function calcPress(value){
 
-const display =
-document.getElementById("calcDisplay");
+const d=document.getElementById("calcDisplay");
 
-if(display.value==="خطا"){
+if(d.value==="خطا") d.value="";
 
-display.value="";
-
-}
-
-display.value += value;
+d.value+=value;
 
 }
 
@@ -529,40 +476,29 @@ document.getElementById("calcDisplay").value="";
 
 function calcResult(){
 
-const display =
-document.getElementById("calcDisplay");
+const d=document.getElementById("calcDisplay");
 
 try{
 
-if(!display.value){
+if(!d.value)return;
 
-return;
-
-}
-
-display.value=eval(display.value);
+d.value=eval(d.value);
 
 }catch{
 
-display.value="خطا";
+d.value="خطا";
 
 }
 
 }
 
 
-/* =========================
-   API نرخ ارز
-========================= */
-
-
-/* کلید API جدیدت را فقط اینجا وارد کن */
+/* API */
 
 const API_KEY="اینجا کلید API جدید را وارد کن";
 
-
 const API=
-"https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
+"https://netarz.ir/api/fx/v1/rates?codes=USD,TRY";
 
 
 async function load(){
@@ -570,42 +506,25 @@ async function load(){
 try{
 
 const r=await fetch(API,{
-
 headers:{
-
 "Authorization":"Bearer "+API_KEY,
-
 "Accept":"application/json"
-
 }
-
 });
 
-
 const j=await r.json();
-
 
 if(!r.ok){
 
 throw new Error(
-
-(j.error?.code || "ERROR")+
-
-" - "+
-
-(j.error?.message || "خطای دریافت نرخ")
-
+j.error?.code+" - "+j.error?.message
 );
 
 }
 
-
-const data=j.data || [];
-
+const data=j.data||[];
 
 const usd=data.find(x=>x.code==="USD");
-
-const eur=data.find(x=>x.code==="EUR");
 
 const tr=data.find(x=>x.code==="TRY");
 
@@ -613,25 +532,10 @@ const tr=data.find(x=>x.code==="TRY");
 if(usd){
 
 document.getElementById("usdBuy").textContent=
-
 Number(usd.buy).toLocaleString("fa-IR");
 
 document.getElementById("usdSell").textContent=
-
 Number(usd.sell).toLocaleString("fa-IR");
-
-}
-
-
-if(eur){
-
-document.getElementById("eurBuy").textContent=
-
-Number(eur.buy).toLocaleString("fa-IR");
-
-document.getElementById("eurSell").textContent=
-
-Number(eur.sell).toLocaleString("fa-IR");
 
 }
 
@@ -639,33 +543,24 @@ Number(eur.sell).toLocaleString("fa-IR");
 if(tr){
 
 document.getElementById("tryBuy").textContent=
-
 Number(tr.buy).toLocaleString("fa-IR");
 
 document.getElementById("trySell").textContent=
-
 Number(tr.sell).toLocaleString("fa-IR");
 
 }
 
 
 document.getElementById("status").textContent=
-
 "آخرین بروزرسانی: "+
-
 new Date().toLocaleTimeString("fa-IR");
-
 
 document.getElementById("status")
 .classList.remove("error");
 
-
 }catch(e){
 
-console.error(e);
-
 document.getElementById("status").textContent=
-
 "خطا: "+e.message;
 
 document.getElementById("status")
@@ -675,17 +570,11 @@ document.getElementById("status")
 
 }
 
-
 load();
-
-
-/* بروزرسانی هر ۵ دقیقه */
 
 setInterval(load,300000);
 
 </script>
 
-
 </body>
-
 </html>
