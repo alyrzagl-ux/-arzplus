@@ -8,41 +8,61 @@
 <title>نیک فرجام | ARZ PLUS</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
 font-family:Tahoma,Arial,sans-serif;
-background:#050606;
-color:#eee;
+background:#edf8fc;
+color:#263b48;
 }
+
+/* =====================
+   HEADER
+===================== */
 
 header{
 text-align:center;
 padding:30px 15px;
-background:linear-gradient(145deg,#050505,#0d1210);
-border-bottom:1px solid #8d7220;
+background:linear-gradient(145deg,#dff3fa,#f9fdfd);
+border-bottom:2px solid #d8c08a;
+box-shadow:0 3px 18px rgba(50,100,120,.10);
 }
 
 header h1{
 margin:0;
-font-size:42px;
-color:#d4af37;
-font-family:serif;
+font-size:52px;
+font-weight:normal;
+line-height:1.3;
+color:#c6a65d;
+font-family:
+"IranNastaliq",
+"B Nazanin",
+"Noto Nastaliq Urdu",
+serif;
+text-shadow:0 2px 3px rgba(160,130,60,.18);
 }
 
 header h2{
-margin:3px 0;
-font-size:13px;
-letter-spacing:4px;
-color:#d4af37;
+margin:2px 0;
+font-size:14px;
+letter-spacing:5px;
+color:#a88948;
+font-family:Georgia,serif;
 }
 
 header p{
 margin:10px 0 0;
 font-size:12px;
-color:#999;
+color:#617985;
 }
+
+/* =====================
+   NOTICE
+===================== */
 
 .notice{
 max-width:570px;
@@ -51,11 +71,16 @@ padding:11px;
 text-align:center;
 font-size:12px;
 line-height:1.8;
-color:#d4af37;
-background:#11130f;
-border:1px solid #51451d;
+color:#967a3e;
+background:#fffdf7;
+border:1px solid #dfcc9d;
 border-radius:12px;
+box-shadow:0 3px 12px rgba(60,110,130,.07);
 }
+
+/* =====================
+   CONTAINER
+===================== */
 
 .container{
 max-width:600px;
@@ -63,20 +88,29 @@ margin:auto;
 padding:10px;
 }
 
+/* =====================
+   CARD
+===================== */
+
 .card{
-background:linear-gradient(145deg,#111514,#080a09);
-border:1px solid #3d3921;
+background:linear-gradient(145deg,#ffffff,#f8fcfd);
+border:1px solid #d9c99e;
 border-radius:15px;
 padding:17px;
 margin-bottom:14px;
-box-shadow:0 5px 18px #0008;
+box-shadow:0 5px 18px rgba(50,100,120,.10);
 }
 
 .title{
 font-size:17px;
 font-weight:bold;
 margin-bottom:13px;
+color:#304d5c;
 }
+
+/* =====================
+   PRICES
+===================== */
 
 .prices{
 display:flex;
@@ -87,13 +121,14 @@ gap:9px;
 flex:1;
 padding:12px 8px;
 text-align:center;
-background:#0b0e0d;
+background:#eef8fb;
+border:1px solid #e2d5b5;
 border-radius:10px;
 }
 
 .box small{
 display:block;
-color:#888;
+color:#71858e;
 font-size:11px;
 margin-bottom:7px;
 }
@@ -103,35 +138,49 @@ font-size:20px;
 font-weight:bold;
 }
 
-.buy{color:#24c88a}
-.sell{color:#e56b6f}
+.buy{
+color:#15966b;
+}
+
+.sell{
+color:#d45d63;
+}
 
 .unit{
 font-size:10px;
-color:#777;
+color:#82939a;
 }
+
+/* =====================
+   FORM
+===================== */
 
 label{
 display:block;
 font-size:12px;
-color:#999;
+color:#687e87;
 margin:10px 0 6px;
 }
 
-select,input{
+select,
+input{
 width:100%;
 height:43px;
 padding:8px;
 border-radius:9px;
-border:1px solid #51451d;
-background:#090b0a;
-color:#eee;
+border:1px solid #d6c89f;
+background:#ffffff;
+color:#304653;
 font-size:14px;
 }
 
 input{
 direction:ltr;
 }
+
+/* =====================
+   BUTTONS
+===================== */
 
 .buttons{
 display:flex;
@@ -142,68 +191,86 @@ gap:8px;
 flex:1;
 height:42px;
 border-radius:9px;
-border:1px solid #333;
-background:#0b0e0d;
-color:#999;
+border:1px solid #d8cda9;
+background:#f3fafc;
+color:#71818a;
 font-weight:bold;
 }
 
 .buttons .active-buy{
-background:#174d3b;
-border-color:#24c88a;
-color:#42dda2;
+background:#e1f5ec;
+border-color:#45b78d;
+color:#18885f;
 }
 
 .buttons .active-sell{
-background:#4a2022;
-border-color:#e56b6f;
-color:#ff8589;
+background:#fbe9ea;
+border-color:#df777c;
+color:#c74e55;
 }
+
+/* =====================
+   RATE
+===================== */
 
 .rate{
 margin-top:13px;
 padding:12px;
 text-align:center;
-background:#0a0d0c;
+background:#edf7fa;
+border:1px solid #e1d5b8;
 border-radius:10px;
 }
 
 .rate strong{
 display:block;
 font-size:21px;
-color:#d4af37;
+color:#b18f4b;
 margin-top:4px;
 }
+
+/* =====================
+   RESULT
+===================== */
 
 .result{
 margin-top:9px;
 padding:14px;
 text-align:center;
-background:#101513;
+background:#f8fbfc;
+border:1px solid #e2d7bd;
 border-radius:10px;
 }
 
 .result strong{
 display:block;
 font-size:26px;
-color:#24c88a;
+color:#15966b;
 margin-top:4px;
 }
+
+/* =====================
+   WARNING
+===================== */
 
 .warning{
 text-align:center;
 font-size:11px;
-color:#888;
+color:#7c8b91;
 line-height:1.8;
 margin-top:10px;
 }
+
+/* =====================
+   CONTACT
+===================== */
 
 .contact{
 text-align:center;
 }
 
 .contact h2{
-color:#d4af37;
+color:#b18f4b;
 margin-top:0;
 }
 
@@ -212,237 +279,459 @@ display:block;
 padding:11px;
 margin-top:9px;
 border-radius:9px;
-background:#0b0e0d;
-border:1px solid #3d3921;
-color:#eee;
+background:#f4fafc;
+border:1px solid #d9c99d;
+color:#304c5b;
 text-decoration:none;
 font-weight:bold;
 }
 
+.contact a:hover{
+background:#e7f5fa;
+}
+
+/* =====================
+   STATUS
+===================== */
+
 #status{
 text-align:center;
 font-size:11px;
-color:#777;
+color:#71838b;
 margin:18px;
 }
 
 .error{
-color:#e56b6f!important;
+color:#d45d63!important;
 }
+
+/* =====================
+   FOOTER
+===================== */
 
 footer{
 text-align:center;
 font-size:10px;
-color:#555;
+color:#71838b;
 padding:18px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 <header>
+
 <h1>نیک فرجام</h1>
+
 <h2>ARZ PLUS</h2>
+
 <p>نرخ لحظه‌ای ارز و طلا</p>
+
 </header>
 
+
 <div class="notice">
+
 ⚠️ به دلیل نوسانات بازار، جهت معامله و استعلام قیمت لحظه‌ای تماس بگیرید.
+
 </div>
+
 
 <div class="container">
 
-<!-- دلار -->
+
+<!-- =====================
+     دلار
+===================== -->
+
 <div class="card">
+
 <div class="title">🇺🇸 دلار آمریکا</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>خرید ما از شما</small>
-<div class="price buy" id="usdBuy">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="usdBuy">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="usdSell">---</div>
-<span class="unit">تومان</span>
+
+<div class="price sell" id="usdSell">
+---
+</div>
+
+<span class="unit">
+تومان
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- یورو -->
+<!-- =====================
+     یورو
+===================== -->
+
 <div class="card">
+
 <div class="title">🇪🇺 یورو</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>خرید ما از شما</small>
-<div class="price buy" id="eurBuy">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="eurBuy">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="eurSell">---</div>
-<span class="unit">تومان</span>
+
+<div class="price sell" id="eurSell">
+---
+</div>
+
+<span class="unit">
+تومان
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- لیر -->
+<!-- =====================
+     لیر
+===================== -->
+
 <div class="card">
+
 <div class="title">🇹🇷 لیر ترکیه</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>خرید ما از شما</small>
-<div class="price buy" id="tryBuy">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="tryBuy">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="trySell">---</div>
-<span class="unit">تومان</span>
+
+<div class="price sell" id="trySell">
+---
+</div>
+
+<span class="unit">
+تومان
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- طلای ۱۸ عیار -->
+<!-- =====================
+     طلای ۱۸
+===================== -->
+
 <div class="card">
+
 <div class="title">🥇 طلای ۱۸ عیار</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>قیمت هر گرم</small>
-<div class="price buy" id="gold18Price">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="gold18Price">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>عیار</small>
-<div class="price sell">۷۵۰</div>
-<span class="unit">۱۸ عیار</span>
+
+<div class="price sell">
+۷۵۰
+</div>
+
+<span class="unit">
+۱۸ عیار
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- نقره -->
+<!-- =====================
+     نقره
+===================== -->
+
 <div class="card">
+
 <div class="title">🥈 نقره ۹۹۹</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>قیمت هر گرم</small>
-<div class="price buy" id="silverPrice">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="silverPrice">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>خلوص</small>
-<div class="price sell">۹۹۹</div>
-<span class="unit">عیار</span>
+
+<div class="price sell">
+۹۹۹
+</div>
+
+<span class="unit">
+عیار
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- سکه امامی -->
+<!-- =====================
+     سکه امامی
+===================== -->
+
 <div class="card">
+
 <div class="title">🪙 سکه امامی</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>قیمت</small>
-<div class="price buy" id="emamiPrice">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="emamiPrice">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>نوع</small>
-<div class="price sell">امامی</div>
-<span class="unit">تمام سکه</span>
+
+<div class="price sell">
+امامی
+</div>
+
+<span class="unit">
+تمام سکه
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- نیم سکه -->
+<!-- =====================
+     نیم سکه
+===================== -->
+
 <div class="card">
+
 <div class="title">🪙 نیم سکه</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>قیمت</small>
-<div class="price buy" id="halfPrice">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="halfPrice">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>نوع</small>
-<div class="price sell">نیم</div>
-<span class="unit">سکه</span>
+
+<div class="price sell">
+نیم
+</div>
+
+<span class="unit">
+سکه
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- ربع سکه -->
+<!-- =====================
+     ربع سکه
+===================== -->
+
 <div class="card">
+
 <div class="title">🪙 ربع سکه</div>
 
 <div class="prices">
 
 <div class="box">
+
 <small>قیمت</small>
-<div class="price buy" id="quarterPrice">---</div>
-<span class="unit">تومان</span>
+
+<div class="price buy" id="quarterPrice">
+---
 </div>
+
+<span class="unit">
+تومان
+</span>
+
+</div>
+
 
 <div class="box">
+
 <small>نوع</small>
-<div class="price sell">ربع</div>
-<span class="unit">سکه</span>
+
+<div class="price sell">
+ربع
+</div>
+
+<span class="unit">
+سکه
+</span>
+
 </div>
 
 </div>
+
 </div>
 
 
-<!-- مبدل -->
+<!-- =====================
+     مبدل ارز
+===================== -->
+
 <div class="card" id="converter">
 
-<div class="title">🔄 تبدیل ارز</div>
+<div class="title">
+🔄 تبدیل ارز
+</div>
 
-<label>انتخاب ارز</label>
+
+<label>
+انتخاب ارز
+</label>
+
 
 <select id="currency" onchange="updateConverter()">
-<option value="USD">🇺🇸 دلار آمریکا</option>
-<option value="EUR">🇪🇺 یورو</option>
-<option value="TRY">🇹🇷 لیر ترکیه</option>
+
+<option value="USD">
+🇺🇸 دلار آمریکا
+</option>
+
+<option value="EUR">
+🇪🇺 یورو
+</option>
+
+<option value="TRY">
+🇹🇷 لیر ترکیه
+</option>
+
 </select>
 
-<label>نوع معامله</label>
+
+<label>
+نوع معامله
+</label>
+
 
 <div class="buttons">
 
@@ -450,18 +739,27 @@ padding:18px;
 id="buyBtn"
 class="active-buy"
 onclick="setType('buy')">
+
 فروش ارز به ما
+
 </button>
+
 
 <button
 id="sellBtn"
 onclick="setType('sell')">
+
 خرید ارز از ما
+
 </button>
 
 </div>
 
-<label>مقدار ارز</label>
+
+<label>
+مقدار ارز
+</label>
+
 
 <input
 id="amount"
@@ -470,77 +768,126 @@ placeholder="مثلاً 100"
 oninput="calculate()"
 >
 
+
 <div class="rate">
 
 نرخ لحظه‌ای
 
-<strong id="converterRate">---</strong>
+<strong id="converterRate">
+---
+</strong>
 
-<span class="unit">تومان</span>
+<span class="unit">
+تومان
+</span>
 
 </div>
+
 
 <div class="result">
 
 مبلغ تقریبی
 
-<strong id="result">0</strong>
+<strong id="result">
+0
+</strong>
 
-<span class="unit">تومان</span>
+<span class="unit">
+تومان
+</span>
 
 </div>
+
 
 <div class="warning">
+
 ⚠️ این قیمت حدودی است؛ جهت معامله دقیق‌تر تماس بگیرید.
-</div>
 
 </div>
 
+</div>
 
-<!-- تماس -->
+
+<!-- =====================
+     تماس
+===================== -->
 
 <div class="card contact">
 
-<h2>📞 تماس با ما</h2>
+<h2>
+📞 تماس با ما
+</h2>
+
 
 <a href="tel:09034966597">
+
 مسعود نیک فرجام<br>
+
 0903 496 6597
+
 </a>
+
 
 <a href="tel:09933747293">
+
 علیرضا گل محمدی<br>
+
 0993 374 7293
+
 </a>
 
-<a href="https://t.me/ArzPlusMarket" target="_blank">
+
+<a
+href="https://t.me/ArzPlusMarket"
+target="_blank">
+
 📲 کانال تلگرام ArzPlusMarket
+
 </a>
 
 </div>
 
 
 <div id="status">
+
 در حال دریافت نرخ ارز و طلا...
-</div>
 
 </div>
+
+
+</div>
+
 
 <footer>
+
 © 2026 نیک فرجام | ARZ PLUS
+
 </footer>
 
 
 <script>
 
 /* =====================
-   تنظیم اختلاف قیمت ارز
+   تنظیم اختلاف قیمت
 ===================== */
 
 const SETTINGS={
-USD:{buy:200,sell:0},
-EUR:{buy:0,sell:0},
-TRY:{buy:0,sell:0}
+
+USD:{
+buy:200,
+sell:0
+},
+
+EUR:{
+buy:0,
+sell:0
+},
+
+TRY:{
+buy:0,
+sell:0
+}
+
 };
 
 
@@ -548,7 +895,9 @@ TRY:{buy:0,sell:0}
    کلید NetArz
 ===================== */
 
-const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
+const API_KEY=
+"fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
+
 
 const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
@@ -558,17 +907,37 @@ const API=
    کلید Tindex
 ===================== */
 
-const TINDEX_API_TOKEN=" 601|rHPRj8obu9h8I28JupThPB1dXMljgyrzFmJNPDgC35a18b93";
+const TINDEX_API_TOKEN=
+" 601|rHPRj8obu9h8I28JupThPB1dXMljgyrzFmJNPDgC35a18b93";
+
 
 const TINDEX_API=
 "https://tindex.app/api/public/indicators/by-category/precious-metals";
 
 
+/* =====================
+   نرخ ها
+===================== */
+
 let rates={
-USD:{buy:0,sell:0},
-EUR:{buy:0,sell:0},
-TRY:{buy:0,sell:0}
+
+USD:{
+buy:0,
+sell:0
+},
+
+EUR:{
+buy:0,
+sell:0
+},
+
+TRY:{
+buy:0,
+sell:0
+}
+
 };
+
 
 let type="buy";
 
@@ -581,104 +950,152 @@ function setType(x){
 
 type=x;
 
-buyBtn.className=x==="buy"?"active-buy":"";
-sellBtn.className=x==="sell"?"active-sell":"";
+buyBtn.className=
+x==="buy"
+?"active-buy"
+:"";
+
+sellBtn.className=
+x==="sell"
+?"active-sell"
+:"";
 
 updateConverter();
+
 }
 
 
 function updateConverter(){
 
-let c=currency.value;
+let c=
+document.getElementById("currency").value;
 
-let r=type==="buy"
+let r=
+type==="buy"
 ?rates[c].buy
 :rates[c].sell;
 
-converterRate.textContent=
-r?r.toLocaleString("fa-IR"):"---";
+document.getElementById("converterRate").textContent=
+r
+?r.toLocaleString("fa-IR")
+:"---";
 
 calculate();
+
 }
 
 
 function calculate(){
 
-let c=currency.value;
+let c=
+document.getElementById("currency").value;
 
-let amount=Number(
+let amount=
+Number(
 document.getElementById("amount").value
 );
 
-let r=type==="buy"
+let r=
+type==="buy"
 ?rates[c].buy
 :rates[c].sell;
 
-result.textContent=
+document.getElementById("result").textContent=
 amount&&r
 ?(amount*r).toLocaleString("fa-IR")
 :"0";
+
 }
 
 
 /* =====================
-   دریافت ارزها
+   دریافت ارز
 ===================== */
 
 async function loadCurrencies(){
 
-let response=await fetch(API,{
+let response=
+await fetch(API,{
+
 headers:{
-"Authorization":"Bearer "+API_KEY,
-"Accept":"application/json"
+
+"Authorization":
+"Bearer "+API_KEY,
+
+"Accept":
+"application/json"
+
 }
+
 });
 
-let json=await response.json();
+
+let json=
+await response.json();
+
 
 if(!response.ok)
+
 throw new Error(
-json.error?.message||"خطای دریافت نرخ ارز"
+json.error?.message||
+"خطای دریافت نرخ ارز"
 );
 
-let data=json.data||[];
+
+let data=
+json.data||[];
+
 
 ["USD","EUR","TRY"].forEach(code=>{
 
-let x=data.find(i=>i.code===code);
+let x=
+data.find(i=>i.code===code);
 
 if(!x)return;
 
-let baseBuy=Number(x.buy)||0;
-let baseSell=Number(x.sell)||0;
+
+let baseBuy=
+Number(x.buy)||0;
+
+let baseSell=
+Number(x.sell)||0;
+
 
 rates[code].buy=
-baseBuy+SETTINGS[code].buy;
+baseBuy+
+SETTINGS[code].buy;
+
 
 rates[code].sell=
-baseSell+SETTINGS[code].sell;
+baseSell+
+SETTINGS[code].sell;
 
 });
 
 
-usdBuy.textContent=
+document.getElementById("usdBuy").textContent=
 rates.USD.buy.toLocaleString("fa-IR");
 
-usdSell.textContent=
+
+document.getElementById("usdSell").textContent=
 rates.USD.sell.toLocaleString("fa-IR");
 
-eurBuy.textContent=
+
+document.getElementById("eurBuy").textContent=
 rates.EUR.buy.toLocaleString("fa-IR");
 
-eurSell.textContent=
+
+document.getElementById("eurSell").textContent=
 rates.EUR.sell.toLocaleString("fa-IR");
 
-tryBuy.textContent=
+
+document.getElementById("tryBuy").textContent=
 rates.TRY.buy.toLocaleString("fa-IR");
 
-trySell.textContent=
+
+document.getElementById("trySell").textContent=
 rates.TRY.sell.toLocaleString("fa-IR");
+
 
 updateConverter();
 
@@ -686,25 +1103,44 @@ updateConverter();
 
 
 /* =====================
-   دریافت طلا، نقره و سکه
+   دریافت طلا و سکه
 ===================== */
 
 async function loadGoldAndCoins(){
 
-let response=await fetch(TINDEX_API,{
+let response=
+await fetch(TINDEX_API,{
+
 headers:{
-"Authorization":"Bearer "+TINDEX_API_TOKEN,
-"Accept":"application/json"
+
+"Authorization":
+"Bearer "+TINDEX_API_TOKEN,
+
+"Accept":
+"application/json"
+
 }
+
 });
 
-let json=await response.json();
+
+let json=
+await response.json();
+
 
 if(!response.ok)
-throw new Error("خطای دریافت قیمت طلا و سکه");
+
+throw new Error(
+"خطای دریافت قیمت طلا و سکه"
+);
+
 
 if(!json.success)
-throw new Error("Tindex خطا داد");
+
+throw new Error(
+"Tindex خطا داد"
+);
+
 
 let rows=
 json.data &&
@@ -715,40 +1151,45 @@ Array.isArray(json.data.rows)
 
 /* طلای ۱۸ */
 
-let gold18=rows.find(item=>
+let gold18=
+rows.find(item=>
 item.slug==="GOLD-18K"
 );
 
 
-/* نقره ۹۹۹ */
+/* نقره */
 
-let silver=rows.find(item=>
+let silver=
+rows.find(item=>
 item.slug==="SILVER-999"
 );
 
 
 /* سکه امامی */
 
-let emami=rows.find(item=>
+let emami=
+rows.find(item=>
 item.slug==="emami-coin"
 );
 
 
 /* نیم سکه */
 
-let half=rows.find(item=>
+let half=
+rows.find(item=>
 item.slug==="HALF-COIN"
 );
 
 
 /* ربع سکه */
 
-let quarter=rows.find(item=>
+let quarter=
+rows.find(item=>
 item.slug==="QUARTER-COIN"
 );
 
 
-/* نمایش قیمت‌ها */
+/* قیمت طلا */
 
 if(gold18){
 
@@ -760,13 +1201,17 @@ gold18.current_price;
 
 if(price!=null){
 
-gold18Price.textContent=
+document.getElementById(
+"gold18Price"
+).textContent=
 Number(price).toLocaleString("fa-IR");
 
 }
 
 }
 
+
+/* قیمت نقره */
 
 if(silver){
 
@@ -778,13 +1223,17 @@ silver.current_price;
 
 if(price!=null){
 
-silverPrice.textContent=
+document.getElementById(
+"silverPrice"
+).textContent=
 Number(price).toLocaleString("fa-IR");
 
 }
 
 }
 
+
+/* سکه امامی */
 
 if(emami){
 
@@ -796,13 +1245,17 @@ emami.current_price;
 
 if(price!=null){
 
-emamiPrice.textContent=
+document.getElementById(
+"emamiPrice"
+).textContent=
 Number(price).toLocaleString("fa-IR");
 
 }
 
 }
 
+
+/* نیم سکه */
 
 if(half){
 
@@ -814,13 +1267,17 @@ half.current_price;
 
 if(price!=null){
 
-halfPrice.textContent=
+document.getElementById(
+"halfPrice"
+).textContent=
 Number(price).toLocaleString("fa-IR");
 
 }
 
 }
 
+
+/* ربع سکه */
 
 if(quarter){
 
@@ -832,7 +1289,9 @@ quarter.current_price;
 
 if(price!=null){
 
-quarterPrice.textContent=
+document.getElementById(
+"quarterPrice"
+).textContent=
 Number(price).toLocaleString("fa-IR");
 
 }
@@ -851,24 +1310,36 @@ async function load(){
 try{
 
 await Promise.all([
+
 loadCurrencies(),
+
 loadGoldAndCoins()
+
 ]);
 
-status.textContent=
+
+document.getElementById("status").textContent=
 "آخرین بروزرسانی: "+
 new Date().toLocaleTimeString("fa-IR");
 
-status.classList.remove("error");
+
+document.getElementById(
+"status"
+).classList.remove("error");
+
 
 }catch(e){
 
 console.error(e);
 
-status.textContent=
+
+document.getElementById("status").textContent=
 "خطا: "+e.message;
 
-status.classList.add("error");
+
+document.getElementById(
+"status"
+).classList.add("error");
 
 }
 
@@ -876,7 +1347,7 @@ status.classList.add("error");
 
 
 /* =====================
-   اجرا
+   شروع
 ===================== */
 
 load();
@@ -886,7 +1357,10 @@ load();
    بروزرسانی هر ۵ دقیقه
 ===================== */
 
-setInterval(load,300000);
+setInterval(
+load,
+300000
+);
 
 </script>
 
