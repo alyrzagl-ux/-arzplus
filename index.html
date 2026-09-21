@@ -1,576 +1,522 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ارز پلاس | نیک فرجام</title>
 
-<title>ارز پلاس | نرخ ارز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-body{
-margin:0;
-font-family:Tahoma,Arial;
-background:#f3f4f6;
-color:#222;
-}
-ن
-header{
-background:#111827;
-color:white;
-text-align:center;
-padding:25px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-header h1{
-margin:0 0 8px;
-font-size:28px;
-}
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.12), transparent 30%),
+        #050505;
+      color: #f5f5f5;
+      font-family: "Vazirmatn", sans-serif;
+    }
 
-header p{
-margin:0;
-color:#d1d5db;
-}
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+      padding: 30px 18px 45px;
+    }
 
-.notice{
-background:#fff7ed;
-color:#9a3412;
-text-align:center;
-padding:12px 15px;
-margin:15px auto;
-max-width:570px;
-border-radius:12px;
-font-size:13px;
-font-weight:bold;
-line-height:1.8;
-}
+    /* HEADER */
 
-.container{
-max-width:600px;
-margin:20px auto;
-padding:10px;
-}
+    .brand {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.card{
-background:white;
-border-radius:15px;
-padding:18px;
-margin-bottom:15px;
-box-shadow:0 4px 15px #ddd;
-}
+    .brand-name {
+      font-family: "Noto Naskh Arabic", serif;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.2;
 
-.title{
-font-size:18px;
-font-weight:bold;
-margin-bottom:15px;
-}
+      background: linear-gradient(
+        135deg,
+        #fff2a6,
+        #d4af37,
+        #fff1a3,
+        #b8860b
+      );
 
-.prices{
-display:flex;
-gap:10px;
-}
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
 
-.box{
-flex:1;
-background:#f5f5f5;
-border-radius:10px;
-padding:12px;
-text-align:center;
-}
+      text-shadow: 0 0 25px rgba(212,175,55,0.18);
+    }
 
-.box small{
-display:block;
-color:#777;
-margin-bottom:8px;
-}
+    .brand-en {
+      margin-top: 2px;
+      color: #d4af37;
+      font-size: 14px;
+      letter-spacing: 5px;
+      font-weight: 700;
+    }
 
-.price{
-font-size:20px;
-font-weight:bold;
-}
+    .brand-line {
+      width: 110px;
+      height: 1px;
+      margin: 15px auto 0;
 
-.unit{
-font-size:12px;
-color:#777;
-}
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #d4af37,
+        transparent
+      );
+    }
 
-#status{
-text-align:center;
-color:#777;
-margin:20px;
-font-size:12px;
-}
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 14px;
+    }
 
-.error{
-color:red!important;
-}
+    /* RATE CARDS */
 
+    .rates {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
 
-/* ماشین حساب */
+    .rate-card {
+      position: relative;
+      overflow: hidden;
 
-.calculator{
-scroll-margin-top:20px;
-}
+      background: linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
 
-#calcDisplay{
-width:100%;
-box-sizing:border-box;
-height:36px;
-border:1px solid #ddd;
-border-radius:8px;
-margin-bottom:7px;
-font-size:17px;
-text-align:left;
-direction:ltr;
-padding:5px 8px;
-background:#f5f5f5;
-}
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 18px;
 
-.calcButtons{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:4px;
-}
+      padding: 20px 22px;
 
-.calcButtons button{
-height:32px;
-border:0;
-border-radius:7px;
-background:#f3f4f6;
-font-size:14px;
-font-weight:bold;
-padding:0;
-cursor:pointer;
-}
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.45),
+        inset 0 0 25px rgba(212,175,55,0.025);
+    }
 
-.operator{
-background:#e5e7eb!important;
-}
+    .rate-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
 
-.equal{
-grid-column:span 4;
-height:30px;
-background:#111827!important;
-color:white;
-}
+      background: linear-gradient(
+        #fff0a0,
+        #d4af37,
+        #8f6b16
+      );
+    }
 
+    .currency {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* تماس */
+    .currency-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #eee;
+    }
 
-.contact{
-background:#111827;
-color:white;
-text-align:center;
-}
+    .currency-symbol {
+      color: #d4af37;
+      font-size: 13px;
+      margin-right: 5px;
+    }
 
-.contact h2{
-margin-top:0;
-}
+    .price {
+      margin-top: 9px;
+      color: #e4c45c;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-.contact a{
-display:block;
-background:white;
-color:#111827;
-text-decoration:none;
-padding:12px;
-border-radius:10px;
-margin-top:10px;
-font-weight:bold;
-}
+    .unit {
+      color: #777;
+      font-size: 11px;
+      margin-right: 5px;
+    }
 
+    /* UPDATE */
 
-/* فوتر */
+    .update {
+      text-align: center;
+      margin-top: 20px;
+      color: #777;
+      font-size: 11px;
+    }
 
-footer{
-text-align:center;
-color:#777;
-font-size:12px;
-padding:20px;
-}
+    /* ERROR */
 
-</style>
+    .error {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      color: #d88;
+      font-size: 12px;
+    }
 
+    /* FOOTER */
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+
+      border-top: 1px solid rgba(212,175,55,0.15);
+    }
+
+    .footer-title {
+      color: #d4af37;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .footer-text {
+      color: #666;
+      font-size: 11px;
+      margin-top: 7px;
+    }
+
+    .telegram {
+      display: inline-block;
+      margin-top: 15px;
+
+      color: #d4af37;
+      text-decoration: none;
+
+      border: 1px solid rgba(212,175,55,0.35);
+      padding: 8px 18px;
+      border-radius: 20px;
+
+      font-size: 12px;
+    }
+
+    .telegram:hover {
+      background: rgba(212,175,55,0.08);
+    }
+  </style>
 </head>
 
 <body>
 
+  <main class="container">
 
-<header>
-<header class="top-header">
+    <!-- BRAND -->
 
-<h1>نیک فرجام</h1>
+    <header class="brand">
 
-<p>نرخ لحظه‌ای ارز</p>
+      <div class="brand-name">
+        نیک‌فرجام
+      </div>
 
-</header>
+      <div class="brand-en">
+        ARZ PLUS
+      </div>
 
+      <div class="brand-line"></div>
 
-<div class="notice">
+      <div class="subtitle">
+        نرخ لحظه‌ای ارز
+      </div>
 
-⚠️ به دلیل نوسانات شدید بازار، جهت معامله و استعلام قیمت لحظه‌ای تماس بگیرید.
+    </header>
 
-</div>
 
+    <!-- RATES -->
 
-<div class="container">
+    <section class="rates">
 
+      <div class="rate-card">
+        <div class="currency">
+          <div class="currency-name">
+            دلار آمریکا
+          </div>
 
-<!-- دلار -->
+          <div class="currency-symbol">
+            USD $
+          </div>
+        </div>
 
-<div class="card">
+        <div class="price" id="usd">
+          در حال دریافت...
+        </div>
 
-<div class="title">🇺🇸 دلار آمریکا</div>
+        <span class="unit">
+          تومان
+        </span>
+      </div>
 
-<div class="prices">
 
-<div class="box">
+      <div class="rate-card">
+        <div class="currency">
+          <div class="currency-name">
+            یورو
+          </div>
 
-<small>خرید</small>
+          <div class="currency-symbol">
+            EUR €
+          </div>
+        </div>
 
-<div class="price" id="usdBuy">---</div>
+        <div class="price" id="eur">
+          در حال دریافت...
+        </div>
 
-<span class="unit">تومان</span>
+        <span class="unit">
+          تومان
+        </span>
+      </div>
 
-</div>
 
-<div class="box">
+      <div class="rate-card">
+        <div class="currency">
+          <div class="currency-name">
+            لیر ترکیه
+          </div>
 
-<small>فروش</small>
+          <div class="currency-symbol">
+            TRY ₺
+          </div>
+        </div>
 
-<div class="price" id="usdSell">---</div>
+        <div class="price" id="try">
+          در حال دریافت...
+        </div>
 
-<span class="unit">تومان</span>
+        <span class="unit">
+          تومان
+        </span>
+      </div>
 
-</div>
+    </section>
 
-</div>
 
-</div>
+    <div class="update" id="update">
+      در حال بروزرسانی...
+    </div>
 
+    <div class="error" id="error">
+      خطا در دریافت نرخ ارز
+    </div>
 
-<!-- یورو -->
 
-<div class="card">
+    <!-- FOOTER -->
 
-<div class="title">🇪🇺 یورو</div>
+    <footer class="footer">
 
-<div class="prices">
+      <div class="footer-title">
+        ارز پلاس
+      </div>
 
-<div class="box">
+      <div class="footer-text">
+        نرخ‌ها به صورت آنلاین بروزرسانی می‌شوند
+      </div>
 
-<small>خرید</small>
+      <a
+        class="telegram"
+        href="https://t.me/ArzPlusMarket"
+        target="_blank"
+      >
+        کانال تلگرام ارز پلاس
+      </a>
 
-<div class="price" id="eurBuy">---</div>
+    </footer>
 
-<span class="unit">تومان</span>
-
-</div>
-
-<div class="box">
-
-<small>فروش</small>
-
-<div class="price" id="eurSell">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- لیر -->
-
-<div class="card">
-
-<div class="title">🇹🇷 لیر ترکیه</div>
-
-<div class="prices">
-
-<div class="box">
-
-<small>خرید</small>
-
-<div class="price" id="tryBuy">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-<div class="box">
-
-<small>فروش</small>
-
-<div class="price" id="trySell">---</div>
-
-<span class="unit">تومان</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ماشین حساب -->
-
-<div class="card calculator" id="calculator">
-
-<div class="title">
-🧮 ماشین حساب
-</div>
-
-<input
-type="text"
-id="calcDisplay"
-readonly
-placeholder="0"
->
-
-<div class="calcButtons">
-
-<button onclick="calcPress('7')">7</button>
-<button onclick="calcPress('8')">8</button>
-<button onclick="calcPress('9')">9</button>
-<button class="operator" onclick="calcPress('/')">÷</button>
-
-<button onclick="calcPress('4')">4</button>
-<button onclick="calcPress('5')">5</button>
-<button onclick="calcPress('6')">6</button>
-<button class="operator" onclick="calcPress('*')">×</button>
-
-<button onclick="calcPress('1')">1</button>
-<button onclick="calcPress('2')">2</button>
-<button onclick="calcPress('3')">3</button>
-<button class="operator" onclick="calcPress('-')">−</button>
-
-<button onclick="calcPress('0')">0</button>
-<button onclick="calcPress('.')">.</button>
-<button onclick="calcClear()">C</button>
-<button class="operator" onclick="calcPress('+')">+</button>
-
-<button class="equal" onclick="calcResult()">=</button>
-
-</div>
-
-</div>
-
-
-<!-- تماس -->
-
-<div class="card contact">
-
-<h2>📞 تماس با ما</h2>
-
-<a href="tel:09034966597">
-
-مسعود نیک‌فرجام
-
-<br>
-
-0903 496 6597
-
-</a>
-
-<a href="tel:09933747293">
-
-علیرضا گل‌محمدی
-
-<br>
-
-0993 374 7293
-
-</a>
-
-<a href="https://t.me/ArzPlusMarket">
-
-📲 کانال تلگرام ArzPlusMarket
-
-</a>
-
-</div>
-
-
-<div id="status">
-
-در حال دریافت نرخ ارز...
-
-</div>
-
-
-</div>
-
-
-<footer>
-
-© 2026 نیک فرجام
-
-</footer>
+  </main>
 
 
 <script>
 
+  /*
+   =====================================================
+   فق
+   =====================================================
+  */
 
-/* ماشین حساب */
+  const API_KEY = "fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
 
-function calcPress(value){
 
-const display =
-document.getElementById("calcDisplay");
+  /*
+   =====================================================
+   تنظیمات API
+   =====================================================
+  */
 
-if(display.value==="خطا"){
+  const API_URL = "https://netarz.ir/api/fx/v1";
 
-display.value="";
 
-}
+  /*
+   =====================================================
+   نمایش عدد
+   =====================================================
+  */
 
-display.value += value;
+  function formatPrice(value) {
 
-}
+    if (value === null || value === undefined || value === "") {
+      return "—";
+    }
 
+    const number = Number(
+      String(value)
+        .replace(/,/g, "")
+        .replace(/[^\d.-]/g, "")
+    );
 
-function calcClear(){
+    if (isNaN(number)) {
+      return value;
+    }
 
-document.getElementById("calcDisplay").value="";
+    return number.toLocaleString("fa-IR");
+  }
 
-}
 
+  /*
+   =====================================================
+   دریافت نرخ‌ها
+   =====================================================
+  */
 
-function calcResult(){
+  async function loadRates() {
 
-const display =
-document.getElementById("calcDisplay");
+    const errorBox = document.getElementById("error");
 
-try{
+    errorBox.style.display = "none";
 
-if(!display.value){
+    try {
 
-return;
+      const response = await fetch(API_URL, {
 
-}
+        method: "GET",
 
-display.value=eval(display.value);
+        headers: {
+          "Authorization": "Bearer " + API_KEY,
+          "Content-Type": "application/json"
+        }
 
-}catch{
+      });
 
-display.value="خطا";
 
-}
+      if (!response.ok) {
+        throw new Error("API Error: " + response.status);
+      }
 
-}
 
+      const data = await response.json();
 
- /*fx-ntz-v1-9vufjr…xkBX*/
+      console.log("API DATA:", data);
 
-const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
 
-const API=
-"https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
+      /*
+       -------------------------------------------------
+       اگر ساختار پاسخ API فرق داشت، این قسمت را
+       بر اساس پاسخ واقعی API تنظیم می‌کنیم.
+       -------------------------------------------------
+      */
 
+      const rates = data.data || data.rates || data;
 
-async function load(){
 
-try{
+      let usd =
+        rates.USD ||
+        rates.usd ||
+        rates["USD"];
 
-const r=await fetch(API,{
 
-headers:{
+      let eur =
+        rates.EUR ||
+        rates.eur ||
+        rates["EUR"];
 
-"Authorization":"Bearer "+API_KEY,
 
-"Accept":"application/json"
+      let tr =
+        rates.TRY ||
+        rates.try ||
+        rates["TRY"];
 
-}
 
-});
+      document.getElementById("usd").textContent =
+        formatPrice(usd);
 
-const j=await r.json();
+      document.getElementById("eur").textContent =
+        formatPrice(eur);
 
-if(!r.ok){
+      document.getElementById("try").textContent =
+        formatPrice(tr);
 
-throw new Error(
 
-(j.error?.code || "ERROR")+
-" - "+
-(j.error?.message || "خطای دریافت نرخ")
+      const now = new Date();
 
-);
+      document.getElementById("update").textContent =
+        "آخرین بروزرسانی: " +
+        now.toLocaleTimeString("fa-IR", {
+          hour: "2-digit",
+          minute: "2-digit"
+        });
 
-}
 
-const data=j.data || [];
+    } catch (error) {
 
-const usd=data.find(x=>x.code==="USD");
-const eur=data.find(x=>x.code==="EUR");
-const tr=data.find(x=>x.code==="TRY");
+      console.error(error);
 
+      document.getElementById("error").style.display =
+        "block";
 
-if(usd){
+      document.getElementById("update").textContent =
+        "اتصال به سامانه نرخ ارز برقرار نشد";
 
-document.getElementById("usdBuy").textContent=
-Number(usd.buy).toLocaleString("fa-IR");
+    }
 
-document.getElementById("usdSell").textContent=
-Number(usd.sell).toLocaleString("fa-IR");
+  }
 
-}
 
+  /*
+   =====================================================
+   اجرای اولیه
+   =====================================================
+  */
 
-if(eur){
+  loadRates();
 
-document.getElementById("eurBuy").textContent=
-Number(eur.buy).toLocaleString("fa-IR");
 
-document.getElementById("eurSell").textContent=
-Number(eur.sell).toLocaleString("fa-IR");
+  /*
+   =====================================================
+   بروزرسانی هر 60 ثانیه
+   =====================================================
+  */
 
-}
-
-
-if(tr){
-
-document.getElementById("tryBuy").textContent=
-Number(tr.buy).toLocaleString("fa-IR");
-
-document.getElementById("trySell").textContent=
-Number(tr.sell).toLocaleString("fa-IR");
-
-}
-
-
-document.getElementById("status").textContent=
-"آخرین بروزرسانی: "+
-new Date().toLocaleTimeString("fa-IR");
-
-document.getElementById("status")
-.classList.remove("error");
-
-
-}catch(e){
-
-console.error(e);
-
-document.getElementById("status").textContent=
-"خطا: "+e.message;
-
-document.getElementById("status")
-.classList.add("error");
-
-}
-
-}
-
-
-load();
-
-setInterval(load,300000);
+  setInterval(loadRates, 60000);
 
 </script>
 
 </body>
-
 </html>
