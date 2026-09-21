@@ -26,7 +26,6 @@ color:#f5f5f5;
 
 header{
 background:radial-gradient(circle at center,rgba(212,175,55,.12),transparent 55%),#080808;
-color:white;
 text-align:center;
 padding:32px 20px 28px;
 border-bottom:1px solid rgba(212,175,55,.3);
@@ -88,7 +87,6 @@ box-shadow:0 5px 20px rgba(0,0,0,.35);
 font-size:18px;
 font-weight:bold;
 margin-bottom:15px;
-color:#f0f0f0;
 }
 
 .prices{
@@ -133,109 +131,145 @@ font-size:12px;
 color:#e57373!important;
 }
 
-.calculator-link{
+.converter-link{
 display:flex;
 align-items:center;
 justify-content:space-between;
 gap:10px;
 background:linear-gradient(145deg,#151515,#090909);
-color:white;
 cursor:pointer;
 padding:12px 15px;
 border:1px solid rgba(212,175,55,.4);
-transition:.2s;
 }
 
-.calculator-link:active{
+.converter-link:active{
 transform:scale(.98);
 }
 
-.calc-icon{
-font-size:30px;
+.converter-icon{
+font-size:29px;
 background:#d4af37;
 color:#111;
 border-radius:10px;
-padding:6px 9px;
+padding:7px 9px;
 line-height:1;
 order:2;
 }
 
-.calc-text{
+.converter-text{
 flex:1;
 text-align:right;
 }
 
-.calculator-link strong{
+.converter-text strong{
 display:block;
 font-size:17px;
-margin-bottom:3px;
 color:#d4af37;
+margin-bottom:3px;
 }
 
-.calculator-link small{
+.converter-text small{
 display:block;
 color:#aaa;
 font-size:11px;
 }
 
-.calculator{
-scroll-margin-top:20px;
-}
-
-.calc-input{
+select,
+.converter-input{
 width:100%;
-height:42px;
-box-sizing:border-box;
+height:44px;
 border:1px solid rgba(212,175,55,.3);
-border-radius:8px;
-padding:8px;
-font-size:17px;
+border-radius:9px;
+padding:8px 10px;
+font-size:15px;
 background:#0b0b0b;
-color:#d4af37;
-direction:ltr;
+color:#eee;
 outline:none;
+font-family:inherit;
 }
 
-.calc-rate{
+.converter-input{
+direction:ltr;
+}
+
+.form-label{
+display:block;
+color:#aaa;
+font-size:12px;
+margin-bottom:6px;
+}
+
+.form-group{
+margin-bottom:13px;
+}
+
+.type-buttons{
+display:flex;
+gap:8px;
+}
+
+.type-button{
+flex:1;
+height:42px;
+border:1px solid rgba(212,175,55,.25);
+border-radius:9px;
+background:#0d0d0d;
+color:#aaa;
+font-family:inherit;
+font-weight:bold;
+cursor:pointer;
+}
+
+.type-button.active{
+background:#d4af37;
+color:#080808;
+border-color:#d4af37;
+}
+
+.converter-rate{
 background:#0b0b0b;
-border:1px solid rgba(212,175,55,.2);
+border:1px solid rgba(212,175,55,.18);
 border-radius:10px;
 padding:12px;
-margin-bottom:10px;
+text-align:center;
+margin-top:5px;
 }
 
-.calc-rate-label{
+.converter-rate small{
+display:block;
 color:#888;
 font-size:11px;
 }
 
-.calc-rate-value{
+.converter-rate strong{
+display:block;
 color:#d4af37;
-font-size:20px;
-font-weight:bold;
+font-size:21px;
 margin-top:5px;
 }
 
-.calc-result{
+.converter-result{
+margin-top:10px;
 background:#111;
 border-radius:10px;
 padding:15px;
 text-align:center;
 }
 
-.calc-result-label{
+.converter-result small{
+display:block;
 color:#999;
 font-size:11px;
 }
 
-.calc-result-value{
+.converter-result strong{
+display:block;
 color:#d4af37;
-font-size:26px;
-font-weight:bold;
-margin-top:6px;
+font-size:27px;
+margin-top:5px;
 }
 
-.calc-warning{
+.converter-warning{
 text-align:center;
 color:#999;
 font-size:11px;
@@ -244,8 +278,6 @@ margin-top:12px;
 }
 
 .contact{
-background:linear-gradient(145deg,#151515,#080808);
-color:white;
 text-align:center;
 }
 
@@ -280,7 +312,6 @@ border-top:1px solid rgba(212,175,55,.12);
 }
 
 </style>
-
 </head>
 
 <body>
@@ -302,6 +333,9 @@ border-top:1px solid rgba(212,175,55,.12);
 </div>
 
 <div class="container">
+
+
+<!-- دلار -->
 
 <div class="card">
 
@@ -326,6 +360,8 @@ border-top:1px solid rgba(212,175,55,.12);
 </div>
 
 
+<!-- یورو -->
+
 <div class="card">
 
 <div class="title">🇪🇺 یورو</div>
@@ -348,6 +384,8 @@ border-top:1px solid rgba(212,175,55,.12);
 
 </div>
 
+
+<!-- لیر -->
 
 <div class="card">
 
@@ -372,83 +410,134 @@ border-top:1px solid rgba(212,175,55,.12);
 </div>
 
 
+<!-- دکمه مبدل -->
+
 <div
-class="card calculator-link"
-onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})"
+class="card converter-link"
+onclick="document.getElementById('converter').scrollIntoView({behavior:'smooth'})"
 >
 
-<div class="calc-icon">💵</div>
+<div class="converter-icon">🔄</div>
 
-<div class="calc-text">
+<div class="converter-text">
 
-<strong>محاسبه دلار</strong>
+<strong>تبدیل ارز</strong>
 
-<small>محاسبه با نرخ لحظه‌ای دلار</small>
+<small>تبدیل سریع دلار، یورو و لیر به تومان</small>
+
+</div>
+
+</div>
+
+
+<!-- مبدل ارز -->
+
+<div class="card" id="converter">
+
+<div class="title">🔄 تبدیل ارز</div>
+
+
+<div class="form-group">
+
+<label class="form-label">
+انتخاب ارز
+</label>
+
+<select id="currency" onchange="updateConverter()">
+
+<option value="USD">🇺🇸 دلار آمریکا</option>
+
+<option value="EUR">🇪🇺 یورو</option>
+
+<option value="TRY">🇹🇷 لیر ترکیه</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label class="form-label">
+نوع معامله
+</label>
+
+<div class="type-buttons">
+
+<button
+id="buyButton"
+class="type-button active"
+onclick="setTradeType('buy')"
+>
+خرید
+</button>
+
+<button
+id="sellButton"
+class="type-button"
+onclick="setTradeType('sell')"
+>
+فروش
+</button>
 
 </div>
 
 </div>
 
 
-<div class="card calculator" id="calculator">
+<div class="form-group">
 
-<div class="title">💵 محاسبه دلار</div>
-
-<div style="margin-bottom:12px">
-
-<label style="display:block;color:#aaa;font-size:12px;margin-bottom:6px">
-مقدار دلار
+<label class="form-label">
+مقدار ارز
 </label>
 
 <input
 type="number"
-id="dollarAmount"
-class="calc-input"
+id="amount"
+class="converter-input"
 placeholder="مثلاً 100"
 inputmode="decimal"
-oninput="calculateDollar()"
+oninput="calculateConversion()"
 >
 
 </div>
 
 
-<div class="calc-rate">
+<div class="converter-rate">
 
-<div class="calc-rate-label">
-نرخ فروش لحظه‌ای دلار
-</div>
+<small>
+نرخ لحظه‌ای
+</small>
 
-<div
-id="calculatorRate"
-class="calc-rate-value"
->
+<strong id="converterRate">
 ---
+</strong>
+
+<span class="unit">
+تومان
+</span>
+
 </div>
 
-<span class="unit">تومان</span>
 
-</div>
+<div class="converter-result">
 
-
-<div class="calc-result">
-
-<div class="calc-result-label">
+<small>
 مبلغ تقریبی
-</div>
+</small>
 
-<div
-id="dollarResult"
-class="calc-result-value"
->
+<strong id="converterResult">
 0
+</strong>
+
+<span class="unit">
+تومان
+</span>
+
 </div>
 
-<span class="unit">تومان</span>
 
-</div>
-
-
-<div class="calc-warning">
+<div class="converter-warning">
 
 ⚠️ این قیمت حدودی است؛ جهت معامله دقیق‌تر تماس بگیرید.
 
@@ -456,6 +545,8 @@ class="calc-result-value"
 
 </div>
 
+
+<!-- تماس -->
 
 <div class="card contact">
 
@@ -498,6 +589,7 @@ class="calc-result-value"
 
 </div>
 
+
 <footer>
 
 © 2026 نیک فرجام | ARZ PLUS
@@ -507,18 +599,63 @@ class="calc-result-value"
 
 <script>
 
-let dollarSellRate=0;
+let rates={
+USD:{buy:0,sell:0},
+EUR:{buy:0,sell:0},
+TRY:{buy:0,sell:0}
+};
+
+let tradeType="buy";
 
 
-function calculateDollar(){
+function setTradeType(type){
+
+tradeType=type;
+
+document.getElementById("buyButton")
+.classList.toggle("active",type==="buy");
+
+document.getElementById("sellButton")
+.classList.toggle("active",type==="sell");
+
+updateConverter();
+
+}
+
+
+function updateConverter(){
+
+const currency=
+document.getElementById("currency").value;
+
+const rate=
+rates[currency][tradeType]||0;
+
+document.getElementById("converterRate").textContent=
+rate
+?rate.toLocaleString("fa-IR")
+:"---";
+
+calculateConversion();
+
+}
+
+
+function calculateConversion(){
+
+const currency=
+document.getElementById("currency").value;
 
 const amount=
-Number(document.getElementById("dollarAmount").value);
+Number(document.getElementById("amount").value);
+
+const rate=
+rates[currency][tradeType]||0;
 
 const result=
-document.getElementById("dollarResult");
+document.getElementById("converterResult");
 
-if(!amount || !dollarSellRate){
+if(!amount||!rate){
 
 result.textContent="0";
 
@@ -526,16 +663,13 @@ return;
 
 }
 
-const total=
-amount*dollarSellRate;
-
 result.textContent=
-total.toLocaleString("fa-IR");
+(amount*rate).toLocaleString("fa-IR");
 
 }
 
 
-const API_KEY="اینجا کلید API جدید را وارد کن";
+const API_KEY="fx-ntz-v1-9vufjr6jM5N618UJuiqNusmZomasLlIOXPryxkBX";
 
 const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,EUR,TRY";
@@ -575,50 +709,55 @@ const tr=data.find(x=>x.code==="TRY");
 
 if(usd){
 
+rates.USD.buy=Number(usd.buy)||0;
+rates.USD.sell=Number(usd.sell)||0;
+
 document.getElementById("usdBuy").textContent=
-Number(usd.buy).toLocaleString("fa-IR");
+rates.USD.buy.toLocaleString("fa-IR");
 
 document.getElementById("usdSell").textContent=
-Number(usd.sell).toLocaleString("fa-IR");
-
-dollarSellRate=
-Number(usd.sell)||0;
-
-document.getElementById("calculatorRate").textContent=
-dollarSellRate.toLocaleString("fa-IR");
-
-calculateDollar();
+rates.USD.sell.toLocaleString("fa-IR");
 
 }
 
 
 if(eur){
 
+rates.EUR.buy=Number(eur.buy)||0;
+rates.EUR.sell=Number(eur.sell)||0;
+
 document.getElementById("eurBuy").textContent=
-Number(eur.buy).toLocaleString("fa-IR");
+rates.EUR.buy.toLocaleString("fa-IR");
 
 document.getElementById("eurSell").textContent=
-Number(eur.sell).toLocaleString("fa-IR");
+rates.EUR.sell.toLocaleString("fa-IR");
 
 }
 
 
 if(tr){
 
+rates.TRY.buy=Number(tr.buy)||0;
+rates.TRY.sell=Number(tr.sell)||0;
+
 document.getElementById("tryBuy").textContent=
-Number(tr.buy).toLocaleString("fa-IR");
+rates.TRY.buy.toLocaleString("fa-IR");
 
 document.getElementById("trySell").textContent=
-Number(tr.sell).toLocaleString("fa-IR");
+rates.TRY.sell.toLocaleString("fa-IR");
 
 }
+
+
+updateConverter();
 
 
 document.getElementById("status").textContent=
 "آخرین بروزرسانی: "+
 new Date().toLocaleTimeString("fa-IR");
 
-document.getElementById("status").classList.remove("error");
+document.getElementById("status")
+.classList.remove("error");
 
 
 }catch(e){
@@ -628,7 +767,8 @@ console.error(e);
 document.getElementById("status").textContent=
 "خطا: "+e.message;
 
-document.getElementById("status").classList.add("error");
+document.getElementById("status")
+.classList.add("error");
 
 }
 
