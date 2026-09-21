@@ -1,6 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -24,12 +27,16 @@ padding:25px;
 
 header h1{
 margin:0 0 8px;
+font-size:28px;
 }
 
 header p{
 margin:0;
 color:#d1d5db;
 }
+
+
+/* هشدار بازار */
 
 .notice{
 background:#fff7ed;
@@ -44,11 +51,17 @@ font-weight:bold;
 line-height:1.8;
 }
 
+
+/* محتوای اصلی */
+
 .container{
 max-width:600px;
 margin:20px auto;
 padding:10px;
 }
+
+
+/* کارت‌ها */
 
 .card{
 background:white;
@@ -93,6 +106,9 @@ font-size:12px;
 color:#777;
 }
 
+
+/* وضعیت */
+
 #status{
 text-align:center;
 color:#777;
@@ -105,37 +121,56 @@ color:red!important;
 }
 
 
-/* کارت ماشین حساب */
+/* =========================
+   کارت ماشین حساب
+========================= */
 
 .calculator-link{
 display:flex;
 align-items:center;
-gap:15px;
+justify-content:space-between;
+gap:10px;
 background:#111827;
 color:white;
 cursor:pointer;
+padding:12px 15px;
+transition:0.2s;
+}
+
+.calculator-link:active{
+transform:scale(.98);
 }
 
 .calc-icon{
-font-size:42px;
+font-size:32px;
 background:white;
-border-radius:12px;
-padding:8px 12px;
+border-radius:10px;
+padding:6px 9px;
+line-height:1;
+order:2;
+}
+
+.calc-text{
+flex:1;
+text-align:right;
 }
 
 .calculator-link strong{
 display:block;
-font-size:18px;
-margin-bottom:5px;
+font-size:17px;
+margin-bottom:3px;
 }
 
 .calculator-link small{
+display:block;
 color:#d1d5db;
-font-size:12px;
+font-size:11px;
 }
 
 
-/* ماشین حساب */
+/* =========================
+   ماشین حساب پایین صفحه
+========================= */
 
 .calculator{
 scroll-margin-top:20px;
@@ -152,6 +187,7 @@ font-size:17px;
 text-align:left;
 direction:ltr;
 padding:5px 8px;
+background:#f5f5f5;
 }
 
 .calcButtons{
@@ -167,6 +203,12 @@ border-radius:7px;
 background:#f3f4f6;
 font-size:14px;
 font-weight:bold;
+padding:0;
+cursor:pointer;
+}
+
+.calcButtons button:active{
+transform:scale(.95);
 }
 
 .operator{
@@ -175,17 +217,24 @@ background:#e5e7eb!important;
 
 .equal{
 grid-column:span 4;
+height:30px;
 background:#111827!important;
 color:white;
 }
 
 
-/* تماس */
+/* =========================
+   تماس
+========================= */
 
 .contact{
 background:#111827;
 color:white;
 text-align:center;
+}
+
+.contact h2{
+margin-top:0;
 }
 
 .contact a{
@@ -199,11 +248,27 @@ margin-top:10px;
 font-weight:bold;
 }
 
+
+/* فوتر */
+
+footer{
+text-align:center;
+color:#777;
+font-size:12px;
+padding:20px;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     هدر
+========================= -->
 
 <header>
 
@@ -213,6 +278,10 @@ font-weight:bold;
 
 </header>
 
+
+<!-- =========================
+     هشدار
+========================= -->
 
 <div class="notice">
 
@@ -224,7 +293,9 @@ font-weight:bold;
 <div class="container">
 
 
-<!-- دلار -->
+<!-- =========================
+     دلار
+========================= -->
 
 <div class="card">
 
@@ -242,6 +313,7 @@ font-weight:bold;
 
 </div>
 
+
 <div class="box">
 
 <small>فروش</small>
@@ -257,7 +329,9 @@ font-weight:bold;
 </div>
 
 
-<!-- لیر -->
+<!-- =========================
+     لیر
+========================= -->
 
 <div class="card">
 
@@ -275,6 +349,7 @@ font-weight:bold;
 
 </div>
 
+
 <div class="box">
 
 <small>فروش</small>
@@ -290,7 +365,9 @@ font-weight:bold;
 </div>
 
 
-<!-- طلای ۱۸ عیار -->
+<!-- =========================
+     طلای ۱۸ عیار
+========================= -->
 
 <div class="card">
 
@@ -308,6 +385,7 @@ font-weight:bold;
 
 </div>
 
+
 <div class="box">
 
 <small>فروش</small>
@@ -323,7 +401,9 @@ font-weight:bold;
 </div>
 
 
-<!-- نقره -->
+<!-- =========================
+     نقره
+========================= -->
 
 <div class="card">
 
@@ -341,6 +421,7 @@ font-weight:bold;
 
 </div>
 
+
 <div class="box">
 
 <small>فروش</small>
@@ -356,31 +437,42 @@ font-weight:bold;
 </div>
 
 
-<!-- دکمه ماشین حساب -->
+<!-- =========================
+     دکمه ماشین حساب
+========================= -->
 
 <div
 class="card calculator-link"
 onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})"
 >
 
-<div class="calc-icon">🧮</div>
+<div class="calc-icon">
+🧮
+</div>
 
-<div>
+<div class="calc-text">
 
 <strong>ماشین حساب</strong>
 
-<small>برای محاسبات سریع کلیک کنید</small>
+<small>
+برای محاسبات سریع کلیک کنید
+</small>
 
 </div>
 
 </div>
 
 
-<!-- ماشین حساب پایین -->
+<!-- =========================
+     ماشین حساب
+========================= -->
 
 <div class="card calculator" id="calculator">
 
-<div class="title">🧮 ماشین حساب</div>
+<div class="title">
+🧮 ماشین حساب
+</div>
+
 
 <input
 type="text"
@@ -388,6 +480,7 @@ id="calcDisplay"
 readonly
 placeholder="0"
 >
+
 
 <div class="calcButtons">
 
@@ -418,51 +511,82 @@ placeholder="0"
 </div>
 
 
-<!-- تماس -->
+<!-- =========================
+     تماس
+========================= -->
 
 <div class="card contact">
 
 <h2>📞 تماس با ما</h2>
 
+
 <a href="tel:09034966597">
+
 مسعود نیک‌فرجام
+
 <br>
+
 0903 496 6597
+
 </a>
+
 
 <a href="tel:09933747293">
+
 علیرضا گل‌محمدی
+
 <br>
+
 0993 374 7293
+
 </a>
 
+
 <a href="https://t.me/ArzPlusMarket">
+
 📲 کانال تلگرام ArzPlusMarket
+
 </a>
 
 </div>
 
 
 <div id="status">
+
 در حال دریافت نرخ ارز...
+
 </div>
 
 
 </div>
+
+
+<footer>
+
+© 2026 نیک فرجام
+
+</footer>
 
 
 <script>
 
 
-/* ماشین حساب */
+/* =========================
+   ماشین حساب
+========================= */
 
 function calcPress(value){
 
-const d=document.getElementById("calcDisplay");
+const display =
+document.getElementById("calcDisplay");
 
-if(d.value==="خطا") d.value="";
+if(display.value==="خطا"){
 
-d.value+=value;
+display.value="";
+
+}
+
+display.value += value;
 
 }
 
@@ -476,26 +600,39 @@ document.getElementById("calcDisplay").value="";
 
 function calcResult(){
 
-const d=document.getElementById("calcDisplay");
+const display =
+document.getElementById("calcDisplay");
 
 try{
 
-if(!d.value)return;
+if(!display.value){
 
-d.value=eval(d.value);
+return;
+
+}
+
+display.value=eval(display.value);
 
 }catch{
 
-d.value="خطا";
+display.value="خطا";
 
 }
 
 }
 
 
-/* API */
+/* =========================
+   API نرخ ارز
+========================= */
+
+
+/*
+کلید API جدیدت را اینجا وارد کن
+*/
 
 const API_KEY="اینجا کلید API جدید را وارد کن";
+
 
 const API=
 "https://netarz.ir/api/fx/v1/rates?codes=USD,TRY";
@@ -506,36 +643,59 @@ async function load(){
 try{
 
 const r=await fetch(API,{
+
 headers:{
+
 "Authorization":"Bearer "+API_KEY,
+
 "Accept":"application/json"
+
 }
+
 });
 
+
 const j=await r.json();
+
 
 if(!r.ok){
 
 throw new Error(
-j.error?.code+" - "+j.error?.message
+
+(j.error?.code || "ERROR")+
+
+" - "+
+
+(j.error?.message || "خطای دریافت نرخ")
+
 );
 
 }
 
-const data=j.data||[];
 
-const usd=data.find(x=>x.code==="USD");
+const data=j.data || [];
 
-const tr=data.find(x=>x.code==="TRY");
+
+const usd=
+data.find(x=>x.code==="USD");
+
+
+const tr=
+data.find(x=>x.code==="TRY");
 
 
 if(usd){
 
 document.getElementById("usdBuy").textContent=
-Number(usd.buy).toLocaleString("fa-IR");
+
+Number(usd.buy)
+.toLocaleString("fa-IR");
+
 
 document.getElementById("usdSell").textContent=
-Number(usd.sell).toLocaleString("fa-IR");
+
+Number(usd.sell)
+.toLocaleString("fa-IR");
 
 }
 
@@ -543,25 +703,40 @@ Number(usd.sell).toLocaleString("fa-IR");
 if(tr){
 
 document.getElementById("tryBuy").textContent=
-Number(tr.buy).toLocaleString("fa-IR");
+
+Number(tr.buy)
+.toLocaleString("fa-IR");
+
 
 document.getElementById("trySell").textContent=
-Number(tr.sell).toLocaleString("fa-IR");
+
+Number(tr.sell)
+.toLocaleString("fa-IR");
 
 }
 
 
 document.getElementById("status").textContent=
+
 "آخرین بروزرسانی: "+
-new Date().toLocaleTimeString("fa-IR");
+
+new Date()
+.toLocaleTimeString("fa-IR");
+
 
 document.getElementById("status")
 .classList.remove("error");
 
+
 }catch(e){
 
+console.error(e);
+
+
 document.getElementById("status").textContent=
+
 "خطا: "+e.message;
+
 
 document.getElementById("status")
 .classList.add("error");
@@ -570,11 +745,17 @@ document.getElementById("status")
 
 }
 
+
 load();
+
+
+/* بروزرسانی هر ۵ دقیقه */
 
 setInterval(load,300000);
 
 </script>
 
+
 </body>
+
 </html>
