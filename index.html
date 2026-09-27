@@ -19,7 +19,7 @@ color:#263b48;
 
 header{
 text-align:center;
-padding:25px 15px 28px;
+padding:25px 15px 18px;
 background:linear-gradient(145deg,#dff3fa,#fbfefe);
 border-bottom:2px solid #d8c08a;
 box-shadow:0 3px 18px rgba(50,100,120,.10);
@@ -47,6 +47,67 @@ header p{
 margin:4px 0 0;
 font-size:12px;
 color:#617985;
+}
+
+
+/* =====================
+   چارت دلار
+===================== */
+
+.chart-card{
+max-width:570px;
+margin:10px auto 14px;
+padding:10px 12px 8px;
+background:linear-gradient(145deg,#ffffff,#f8fcfd);
+border:1px solid #d9c99e;
+border-radius:13px;
+box-shadow:0 4px 14px rgba(50,100,120,.08);
+}
+
+.chart-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:4px;
+}
+
+.chart-title{
+font-size:12px;
+font-weight:bold;
+color:#304d5c;
+}
+
+.chart-current{
+font-size:11px;
+font-weight:bold;
+color:#a88948;
+}
+
+.chart-wrap{
+height:105px;
+width:100%;
+position:relative;
+}
+
+#usdChart{
+width:100%;
+height:105px;
+display:block;
+}
+
+.chart-footer{
+display:flex;
+justify-content:space-between;
+font-size:9px;
+color:#87979d;
+padding:0 3px;
+}
+
+.chart-loading{
+text-align:center;
+font-size:10px;
+color:#71838b;
+padding:38px 0;
 }
 
 .notice{
@@ -305,18 +366,6 @@ color:#c43f46!important;
 font-weight:bold;
 }
 
-footer{
-text-align:center;
-font-size:10px;
-color:#71838b;
-padding:18px;
-}
-
-
-/* =====================
-   آمار بازدید
-===================== */
-
 .visits{
 text-align:center;
 margin:10px auto 2px;
@@ -335,6 +384,13 @@ font-size:14px;
 margin:0 3px;
 }
 
+footer{
+text-align:center;
+font-size:10px;
+color:#71838b;
+padding:18px;
+}
+
 </style>
 </head>
 
@@ -350,9 +406,50 @@ margin:0 3px;
 
 </header>
 
+
+<!-- =====================
+     چارت واقعی دلار
+===================== -->
+
+<div class="chart-card">
+
+<div class="chart-head">
+
+<div class="chart-title">
+📈 روند دلار در ۲۴ ساعت اخیر
+</div>
+
+<div class="chart-current" id="chartCurrent">
+---
+</div>
+
+</div>
+
+<div class="chart-wrap">
+
+<div id="chartLoading" class="chart-loading">
+در حال دریافت تاریخچه دلار...
+</div>
+
+<canvas id="usdChart"></canvas>
+
+</div>
+
+<div class="chart-footer">
+
+<span>۲۴ ساعت قبل</span>
+
+<span>اکنون</span>
+
+</div>
+
+</div>
+
+
 <div class="notice">
 ⚠️ قیمت‌ها حدودی هستند؛ جهت معامله و استعلام قیمت نهایی تماس بگیرید.
 </div>
+
 
 <div class="container">
 
@@ -368,7 +465,11 @@ margin:0 3px;
 
 <div class="box">
 <small>خرید ما از شما</small>
-<div class="price buy" id="usdBuy">---</div>
+
+<div class="price buy" id="usdBuy">
+---
+</div>
+
 <span class="unit">تومان</span>
 
 <div style="font-size:9px;color:#71858e;margin-top:6px;line-height:1.6;">
@@ -378,12 +479,19 @@ margin:0 3px;
 </div>
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="usdSell">---</div>
+
+<div class="price sell" id="usdSell">
+---
+</div>
+
 <span class="unit">تومان</span>
+
 </div>
 
 </div>
+
 </div>
 
 
@@ -398,18 +506,31 @@ margin:0 3px;
 <div class="prices">
 
 <div class="box">
+
 <small>خرید ما از شما</small>
-<div class="price buy" id="eurBuy">---</div>
+
+<div class="price buy" id="eurBuy">
+---
+</div>
+
 <span class="unit">تومان</span>
+
 </div>
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="eurSell">---</div>
+
+<div class="price sell" id="eurSell">
+---
+</div>
+
 <span class="unit">تومان</span>
+
 </div>
 
 </div>
+
 </div>
 
 
@@ -424,18 +545,31 @@ margin:0 3px;
 <div class="prices">
 
 <div class="box">
+
 <small>خرید ما از شما</small>
-<div class="price buy" id="tryBuy">---</div>
+
+<div class="price buy" id="tryBuy">
+---
+</div>
+
 <span class="unit">تومان</span>
+
 </div>
 
 <div class="box">
+
 <small>فروش ما به شما</small>
-<div class="price sell" id="trySell">---</div>
+
+<div class="price sell" id="trySell">
+---
+</div>
+
 <span class="unit">تومان</span>
+
 </div>
 
 </div>
+
 </div>
 
 
@@ -686,9 +820,7 @@ target="_blank">
 </div>
 
 
-<!-- =====================
-     آمار بازدید
-===================== -->
+<!-- آمار بازدید -->
 
 <div class="visits">
 
@@ -1170,8 +1302,6 @@ const rows=
 json.data?.rows||[];
 
 
-/* طلای ۱۸ */
-
 const gold=
 rows.find(
 item=>
@@ -1181,8 +1311,6 @@ String(item.slug)
 );
 
 
-/* نقره ۹۹۹ */
-
 const silver=
 rows.find(
 item=>
@@ -1191,10 +1319,6 @@ String(item.slug)
 ==="SILVER-999"
 );
 
-
-/* =====================
-   طلا
-===================== */
 
 if(
 gold &&
@@ -1230,10 +1354,6 @@ rates.GOLD.sell.toLocaleString(
 
 }
 
-
-/* =====================
-   نقره
-===================== */
 
 if(
 silver &&
@@ -1271,6 +1391,303 @@ rates.SILVER.sell.toLocaleString(
 
 
 updateConverter();
+
+}
+
+
+/* =====================
+   چارت واقعی دلار
+===================== */
+
+async function loadUSDChart(){
+
+const loading=
+document.getElementById(
+"chartLoading"
+);
+
+const canvas=
+document.getElementById(
+"usdChart"
+);
+
+try{
+
+const response=
+await fetch(
+"https://netarz.ir/api/fx/v1/history/USD?range=24h&interval=1h",
+{
+
+headers:{
+
+"Authorization":
+"Bearer "+API_KEY,
+
+"Accept":
+"application/json"
+
+}
+
+}
+);
+
+
+const json=
+await response.json();
+
+
+if(
+!response.ok
+){
+
+throw new Error(
+json.error?.message||
+"خطای دریافت تاریخچه دلار"
+);
+
+}
+
+
+const data=
+json.data||[];
+
+
+if(
+!data.length
+){
+
+throw new Error(
+"تاریخچه‌ای برای نمایش وجود ندارد"
+);
+
+}
+
+
+loading.style.display=
+"none";
+
+
+drawUSDChart(
+canvas,
+data
+);
+
+
+/* آخرین قیمت چارت */
+
+const last=
+data[data.length-1];
+
+if(last){
+
+document.getElementById(
+"chartCurrent"
+).textContent=
+Number(last.v).toLocaleString(
+"fa-IR"
+)+" تومان";
+
+}
+
+}catch(error){
+
+console.warn(
+"USD chart error:",
+error
+);
+
+loading.textContent=
+"تاریخچه دلار در دسترس نیست";
+
+canvas.style.display=
+"none";
+
+}
+
+}
+
+
+/* =====================
+   رسم چارت بدون کتابخانه
+===================== */
+
+function drawUSDChart(canvas,data){
+
+const ctx=
+canvas.getContext("2d");
+
+const width=
+canvas.clientWidth;
+
+const height=
+canvas.clientHeight;
+
+const dpr=
+window.devicePixelRatio||1;
+
+canvas.width=
+width*dpr;
+
+canvas.height=
+height*dpr;
+
+ctx.scale(dpr,dpr);
+
+ctx.clearRect(
+0,
+0,
+width,
+height
+);
+
+
+const values=
+data.map(
+item=>Number(item.v)
+).filter(
+v=>Number.isFinite(v)
+);
+
+
+if(
+values.length<2
+){
+
+return;
+
+}
+
+
+const min=
+Math.min(...values);
+
+const max=
+Math.max(...values);
+
+const paddingX=
+8;
+
+const paddingY=
+12;
+
+const range=
+max-min||1;
+
+
+/* خطوط زمینه */
+
+ctx.strokeStyle=
+"rgba(201,162,39,.12)";
+
+ctx.lineWidth=
+1;
+
+for(
+let i=1;
+i<3;
+i++
+){
+
+const y=
+paddingY+
+((height-paddingY*2)/3)*i;
+
+ctx.beginPath();
+
+ctx.moveTo(
+paddingX,
+y
+);
+
+ctx.lineTo(
+width-paddingX,
+y
+);
+
+ctx.stroke();
+
+}
+
+
+/* خط اصلی */
+
+ctx.beginPath();
+
+values.forEach(
+(v,i)=>{
+
+const x=
+paddingX+
+(i/(values.length-1))*
+(width-paddingX*2);
+
+const y=
+height-paddingY-
+((v-min)/range)*
+(height-paddingY*2);
+
+if(i===0){
+
+ctx.moveTo(
+x,
+y
+);
+
+}else{
+
+ctx.lineTo(
+x,
+y
+);
+
+}
+
+}
+);
+
+ctx.strokeStyle=
+"#c6a65d";
+
+ctx.lineWidth=
+2;
+
+ctx.lineJoin=
+"round";
+
+ctx.lineCap=
+"round";
+
+ctx.stroke();
+
+
+/* نقطه آخر */
+
+const lastIndex=
+values.length-1;
+
+const lastX=
+paddingX+
+(width-paddingX*2);
+
+const lastY=
+height-paddingY-
+((values[lastIndex]-min)/range)*
+(height-paddingY*2);
+
+ctx.beginPath();
+
+ctx.arc(
+lastX,
+lastY,
+3,
+0,
+Math.PI*2
+);
+
+ctx.fillStyle=
+"#c6a65d";
+
+ctx.fill();
 
 }
 
@@ -1326,6 +1743,8 @@ new Date().toLocaleTimeString(
 
 load();
 
+loadUSDChart();
+
 
 /* ارزها هر ۵ دقیقه */
 
@@ -1339,6 +1758,14 @@ loadCurrencies,
 
 setInterval(
 loadMetals,
+900000
+);
+
+
+/* چارت هر ۱۵ دقیقه */
+
+setInterval(
+loadUSDChart,
 900000
 );
 
