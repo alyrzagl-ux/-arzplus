@@ -381,7 +381,7 @@ padding:18px;
 <div class="metals-head">
 
 <div class="title">
-🥇 طلای ۱۸ عیار
+🥇 طلای ۱۸ عیار (۷۵۰)
 </div>
 
 <div class="purity">
@@ -395,7 +395,7 @@ padding:18px;
 <div class="box">
 
 <small>
-خرید متفرقه
+خرید
 </small>
 
 <div class="price buy" id="gold18Buy">
@@ -435,7 +435,7 @@ padding:18px;
 <div class="metals-head">
 
 <div class="title">
-🥈 نقره ۹۹۹
+🥈 نقره (۹۹۹)
 </div>
 
 <div class="purity">
@@ -449,7 +449,7 @@ padding:18px;
 <div class="box">
 
 <small>
-خرید متفرقه
+خرید
 </small>
 
 <div class="price buy" id="silverBuy">
@@ -530,7 +530,7 @@ id="buyBtn"
 class="active-buy"
 onclick="setType('buy')">
 
-خرید متفرقه
+خرید
 
 </button>
 
@@ -648,18 +648,8 @@ target="_blank">
 
 const SETTINGS={
 
-/*
-نرخ تابلو = نرخ پایه API
-
-خرید دلار از مشتری:
-۷۰۰ تومان پایین‌تر از تابلو
-
-فروش دلار:
-همان نرخ تابلو
-*/
-
 USD:{
-buy:-700,
+buy:-500,
 sell:0
 },
 
@@ -682,23 +672,10 @@ sell:0
 
 const METAL_SETTINGS={
 
-/*
-طلای ۱۸:
-خرید متفرقه ۶۵۰ تومان
-زیر نرخ تابلو
-
-فروش:
-نرخ تابلو
-*/
-
 GOLD:{
 buy:-650,
 sell:0
 },
-
-/*
-نقره فعلاً بدون اختلاف
-*/
 
 SILVER:{
 buy:0,
@@ -1083,11 +1060,6 @@ headers:{
 const json=
 await response.json();
 
-
-/*
-اگر Tindex محدودیت بدهد،
-قیمت قبلی حفظ می‌شود.
-*/
 
 if(
 response.status===429
