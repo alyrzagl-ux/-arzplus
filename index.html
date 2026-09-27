@@ -97,12 +97,13 @@ margin:0;
 }
 
 .purity{
-font-size:10px;
+font-size:16px;
+font-weight:bold;
 color:#9b8147;
 background:#fbf6e8;
 border:1px solid #dfcf9f;
 border-radius:7px;
-padding:4px 7px;
+padding:7px 12px;
 }
 
 .prices{
@@ -142,6 +143,41 @@ color:#d45d63;
 .unit{
 font-size:10px;
 color:#82939a;
+}
+
+.metal-price-box{
+display:flex;
+gap:9px;
+}
+
+.metal-purity-box,
+.metal-sell-box{
+flex:1;
+padding:12px 8px;
+text-align:center;
+background:#eef8fb;
+border:1px solid #e2d5b5;
+border-radius:10px;
+}
+
+.metal-purity-box small,
+.metal-sell-box small{
+display:block;
+color:#71858e;
+font-size:11px;
+margin-bottom:7px;
+}
+
+.metal-purity-big{
+font-size:25px;
+font-weight:bold;
+color:#9b8147;
+}
+
+.metal-sell-box .price{
+font-size:20px;
+font-weight:bold;
+color:#d45d63;
 }
 
 label{
@@ -310,6 +346,11 @@ padding:18px;
 <small>خرید ما از شما</small>
 <div class="price buy" id="usdBuy">---</div>
 <span class="unit">تومان</span>
+
+<div style="font-size:9px;color:#71858e;margin-top:6px;line-height:1.6;">
+۵۰۰ تومان پایین‌تر از قیمت تابلو
+</div>
+
 </div>
 
 <div class="box">
@@ -381,34 +422,26 @@ padding:18px;
 <div class="metals-head">
 
 <div class="title">
-🥇 طلای ۱۸ عیار (۷۵۰)
-</div>
-
-<div class="purity">
-عیار ۷۵۰
+🥇 طلای ۱۸ عیار
 </div>
 
 </div>
 
-<div class="prices">
+<div class="metal-price-box">
 
-<div class="box">
+<div class="metal-purity-box">
 
 <small>
-خرید
+عیار
 </small>
 
-<div class="price buy" id="gold18Buy">
----
+<div class="metal-purity-big">
+۷۵۰
 </div>
-
-<span class="unit">
-تومان / گرم
-</span>
 
 </div>
 
-<div class="box">
+<div class="metal-sell-box">
 
 <small>
 فروش
@@ -425,6 +458,7 @@ padding:18px;
 </div>
 
 </div>
+
 </div>
 
 
@@ -435,34 +469,26 @@ padding:18px;
 <div class="metals-head">
 
 <div class="title">
-🥈 نقره (۹۹۹)
-</div>
-
-<div class="purity">
-عیار ۹۹۹
+🥈 نقره
 </div>
 
 </div>
 
-<div class="prices">
+<div class="metal-price-box">
 
-<div class="box">
+<div class="metal-purity-box">
 
 <small>
-خرید
+عیار
 </small>
 
-<div class="price buy" id="silverBuy">
----
+<div class="metal-purity-big">
+۹۹۹
 </div>
-
-<span class="unit">
-تومان / گرم
-</span>
 
 </div>
 
-<div class="box">
+<div class="metal-sell-box">
 
 <small>
 فروش
@@ -479,6 +505,7 @@ padding:18px;
 </div>
 
 </div>
+
 </div>
 
 
@@ -1152,14 +1179,6 @@ METAL_SETTINGS.GOLD.sell;
 
 
 document.getElementById(
-"gold18Buy"
-).textContent=
-rates.GOLD.buy.toLocaleString(
-"fa-IR"
-);
-
-
-document.getElementById(
 "gold18Sell"
 ).textContent=
 rates.GOLD.sell.toLocaleString(
@@ -1196,14 +1215,6 @@ METAL_SETTINGS.SILVER.buy;
 rates.SILVER.sell=
 base+
 METAL_SETTINGS.SILVER.sell;
-
-
-document.getElementById(
-"silverBuy"
-).textContent=
-rates.SILVER.buy.toLocaleString(
-"fa-IR"
-);
 
 
 document.getElementById(
