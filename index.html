@@ -311,6 +311,30 @@ font-size:10px;
 color:#71838b;
 padding:18px;
 }
+
+
+/* =====================
+   آمار بازدید
+===================== */
+
+.visits{
+text-align:center;
+margin:10px auto 2px;
+padding:11px;
+background:#f8fcfd;
+border:1px solid #d9c99e;
+border-radius:10px;
+color:#71838b;
+font-size:11px;
+max-width:500px;
+}
+
+.visits strong{
+color:#a88948;
+font-size:14px;
+margin:0 3px;
+}
+
 </style>
 </head>
 
@@ -658,6 +682,23 @@ target="_blank">
 <div id="status">
 در حال دریافت نرخ ارز و طلا...
 </div>
+
+</div>
+
+
+<!-- =====================
+     آمار بازدید
+===================== -->
+
+<div class="visits">
+
+👁 بازدید کل:
+<strong id="totalVisits">650</strong>
+
+&nbsp; | &nbsp;
+
+📅 امروز:
+<strong id="todayVisits">20</strong>
 
 </div>
 
@@ -1300,6 +1341,111 @@ setInterval(
 loadMetals,
 900000
 );
+
+
+/* =====================
+   آمار بازدید
+===================== */
+
+async function loadVisitStats(){
+
+try{
+
+const namespace=
+"arzplusmarket";
+
+const totalKey=
+"total-visits";
+
+const today=
+new Date();
+
+const year=
+today.getFullYear();
+
+const month=
+String(
+today.getMonth()+1
+).padStart(2,"0");
+
+const day=
+String(
+today.getDate()
+).padStart(2,"0");
+
+const todayKey=
+"day-"+year+"-"+month+"-"+day;
+
+
+/* بازدید کل */
+
+const totalResponse=
+await fetch(
+"https://counterapi.com/api/"+
+namespace+
+"/view/"+
+totalKey+
+"?startNumber=650"
+);
+
+const totalData=
+await totalResponse.json();
+
+if(
+totalData &&
+typeof totalData.value!=="undefined"
+){
+
+document.getElementById(
+"totalVisits"
+).textContent=
+Number(
+totalData.value
+).toLocaleString("fa-IR");
+
+}
+
+
+/* بازدید امروز */
+
+const todayResponse=
+await fetch(
+"https://counterapi.com/api/"+
+namespace+
+"/view/"+
+todayKey+
+"?startNumber=20"
+);
+
+const todayData=
+await todayResponse.json();
+
+if(
+todayData &&
+typeof todayData.value!=="undefined"
+){
+
+document.getElementById(
+"todayVisits"
+).textContent=
+Number(
+todayData.value
+).toLocaleString("fa-IR");
+
+}
+
+}catch(error){
+
+console.warn(
+"Visit counter error:",
+error
+);
+
+}
+
+}
+
+loadVisitStats();
 
 </script>
 
